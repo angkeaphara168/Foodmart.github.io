@@ -1,0 +1,250 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>My Account - FoodMart</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body class="account-page">
+  <main class="account-shell">
+    <nav class="account-top">
+      <a href="index.html" class="auth-logo">
+        <span class="logo-icon">FM</span>
+        <span>FOOD<span>MART</span></span>
+      </a>
+      <div class="account-actions">
+        <a href="index.html">Shop</a>
+        <a href="register.html">Edit details</a>
+        <button type="button" id="logoutBtn">Clear account</button>
+      </div>
+    </nav>
+
+    <section class="profile-hero">
+      <div class="profile-avatar" id="profileAvatar">FM</div>
+      <div>
+        <span class="cart-kicker">Personal account</span>
+        <h1 id="profileName">Customer</h1>
+        <p id="profileEmail">customer@example.com</p>
+      </div>
+    </section>
+
+    <section class="profile-grid">
+      <article class="profile-card">
+        <span>Phone</span>
+        <strong id="profilePhone">Not added</strong>
+      </article>
+      <article class="profile-card">
+        <span>Delivery address</span>
+        <strong id="profileAddress">Not added</strong>
+      </article>
+      <article class="profile-card">
+        <span>Member since</span>
+        <strong id="profileJoined">Today</strong>
+      </article>
+      <article class="profile-card">
+        <span>Account type</span>
+        <strong>FoodMart demo customer</strong>
+      </article>
+    </section>
+
+    <section class="account-orders">
+      <div class="account-section-head">
+        <div>
+          <span class="cart-kicker">Your Cart</span>
+          <h2>Current order</h2>
+        </div>
+        <div class="section-actions">
+          <strong id="accountCartTotal">$0.00</strong>
+          <button type="button" id="clearAccountCart">Remove all</button>
+        </div>
+      </div>
+
+      <div class="account-cart-list" id="accountCartList"></div>
+      <div class="account-cart-empty" id="accountCartEmpty">
+        Your cart is empty. Add products from the shop and they will show here.
+      </div>
+    </section>
+
+    <section class="account-orders" id="wishlist">
+      <div class="account-section-head">
+        <div>
+          <span class="cart-kicker">Wishlist</span>
+          <h2>Saved for later</h2>
+        </div>
+        <div class="section-actions">
+          <strong id="accountWishCount">0 items</strong>
+          <button type="button" id="clearWishlist">Remove all</button>
+        </div>
+      </div>
+
+      <div class="account-cart-list" id="accountWishlist"></div>
+      <div class="account-cart-empty" id="accountWishlistEmpty">
+        Your wishlist is empty. Tap the heart on any product to save it here.
+      </div>
+    </section>
+  </main>
+
+  <script>
+    const ACCOUNT_KEY = 'foodmart_demo_account';
+    const CART_KEY = 'foodmart_demo_cart';
+    const WISH_KEY = 'foodmart_demo_wishlist';
+    const account = JSON.parse(localStorage.getItem(ACCOUNT_KEY) || 'null');
+    let cartItems = JSON.parse(localStorage.getItem(CART_KEY) || '[]');
+    let wishlistItems = JSON.parse(localStorage.getItem(WISH_KEY) || '[]')
+      .filter(item => typeof item === 'object' && item.id);
+
+    function cartSubtotal() {
+      return cartItems.reduce((sum, item) => sum + item.price * item.qty, 0);
+    }
+
+    function renderAccountCart() {
+      const list = document.getElementById('accountCartList');
+      const empty = document.getElementById('accountCartEmpty');
+      const total = cartSubtotal();
+
+      document.getElementById('accountCartTotal').textContent = '$' + total.toFixed(2);
+      document.getElementById('clearAccountCart').disabled = cartItems.length === 0;
+      empty.style.display = cartItems.length ? 'none' : 'block';
+      list.innerHTML = cartItems.map(item => `
+        <article class="account-cart-item">
+          <img src="${item.img}" alt="${item.name}" />
+          <div>
+            <strong>${item.name}</strong>
+            <span>${item.weight} - Qty ${item.qty}</span>
+          </div>
+          <div class="order-actions">
+            <b>$${(item.price * item.qty).toFixed(2)}</b>
+            <button type="button" data-action="remove" data-id="${item.id}">Remove</button>
+          </div>
+        </article>
+      `).join('');
+    }
+
+    function saveCart() {
+      localStorage.setItem(CART_KEY, JSON.stringify(cartItems));
+    }
+
+    function saveWishlist() {
+      localStorage.setItem(WISH_KEY, JSON.stringify(wishlistItems));
+    }
+
+    function addWishlistToCart(productId) {
+      const product = wishlistItems.find(item => item.id === productId);
+      if (!product) return;
+
+      const existing = cartItems.find(item => item.id === product.id);
+      if (existing) {
+        existing.qty += 1;
+      } else {
+        cartItems.push({
+          id: product.id,
+          name: product.name,
+          price: product.price,
+          img: product.img,
+          weight: product.weight,
+          qty: 1
+        });
+      }
+
+      saveCart();
+      renderAccountCart();
+    }
+
+    function removeWishlistItem(productId) {
+      wishlistItems = wishlistItems.filter(item => item.id !== productId);
+      saveWishlist();
+      renderWishlist();
+    }
+
+    function clearAccountCart() {
+      cartItems = [];
+      saveCart();
+      renderAccountCart();
+    }
+
+    function removeCartItem(productId) {
+      cartItems = cartItems.filter(item => item.id !== productId);
+      saveCart();
+      renderAccountCart();
+    }
+
+    function clearWishlist() {
+      wishlistItems = [];
+      saveWishlist();
+      renderWishlist();
+    }
+
+    function renderWishlist() {
+      const list = document.getElementById('accountWishlist');
+      const empty = document.getElementById('accountWishlistEmpty');
+      const count = wishlistItems.length;
+
+      document.getElementById('accountWishCount').textContent = count + (count === 1 ? ' item' : ' items');
+      document.getElementById('clearWishlist').disabled = count === 0;
+      empty.style.display = count ? 'none' : 'block';
+      list.innerHTML = wishlistItems.map(item => `
+        <article class="account-cart-item wishlist-item">
+          <img src="${item.img}" alt="${item.name}" />
+          <div>
+            <strong>${item.name}</strong>
+            <span>${item.weight} - $${item.price.toFixed(2)}</span>
+          </div>
+          <div class="wishlist-actions">
+            <button type="button" data-action="add" data-id="${item.id}">Add to cart</button>
+            <button type="button" data-action="remove" data-id="${item.id}">Remove</button>
+          </div>
+        </article>
+      `).join('');
+    }
+
+    if (!account) {
+      window.location.href = 'register.html';
+    } else {
+      const initials = account.name
+        .split(' ')
+        .filter(Boolean)
+        .map(part => part[0])
+        .join('')
+        .slice(0, 2)
+        .toUpperCase();
+
+      document.getElementById('profileAvatar').textContent = initials || 'FM';
+      document.getElementById('profileName').textContent = account.name || 'Customer';
+      document.getElementById('profileEmail').textContent = account.email || 'No email added';
+      document.getElementById('profilePhone').textContent = account.phone || 'Not added';
+      document.getElementById('profileAddress').textContent = account.address || 'Not added';
+      document.getElementById('profileJoined').textContent = account.joined || 'Today';
+      renderAccountCart();
+      renderWishlist();
+    }
+
+    document.getElementById('accountWishlist').addEventListener('click', event => {
+      const btn = event.target.closest('button[data-action]');
+      if (!btn) return;
+
+      const id = parseInt(btn.dataset.id);
+      if (btn.dataset.action === 'add') addWishlistToCart(id);
+      if (btn.dataset.action === 'remove') removeWishlistItem(id);
+    });
+
+    document.getElementById('accountCartList').addEventListener('click', event => {
+      const btn = event.target.closest('button[data-action]');
+      if (!btn) return;
+
+      const id = parseInt(btn.dataset.id);
+      if (btn.dataset.action === 'remove') removeCartItem(id);
+    });
+
+    document.getElementById('clearAccountCart').addEventListener('click', clearAccountCart);
+    document.getElementById('clearWishlist').addEventListener('click', clearWishlist);
+
+    document.getElementById('logoutBtn').addEventListener('click', () => {
+      localStorage.removeItem(ACCOUNT_KEY);
+      window.location.href = 'register.html';
+    });
+  </script>
+</body>
+</html>
+

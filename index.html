@@ -1,0 +1,764 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>FoodMart — Grocery Store</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+
+<!-- ─── TOP BAR ─────────────────────────────────── -->
+<div class="topbar">
+  🎉 Free shipping on orders over <span>$50</span> — Use code <span>FRESH20</span> for 20% off your first order!
+</div>
+
+<!-- ─── HEADER ──────────────────────────────────── -->
+<header>
+  <div class="header-inner">
+    <a href="#" class="logo">
+      <div class="logo-icon">🛒</div>
+      <div class="logo-text">
+        <div class="brand">FOOD<span>MART</span></div>
+        <div class="sub">Grocery Store</div>
+      </div>
+    </a>
+    <div class="search-wrap">
+      <div class="search-cat">
+        All Categories
+        <svg viewBox="0 0 12 12" fill="currentColor"><path d="M2 4l4 4 4-4"/></svg>
+      </div>
+      <input class="search-input" type="text" placeholder="Search for more than 20,000 products" id="searchInput"/>
+      <button class="search-btn" aria-label="Search">
+        <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m16.5 16.5 4 4" stroke-linecap="round"/></svg>
+      </button>
+    </div>
+    <div class="support">
+      For Support?
+      <strong>+855-965270091</strong>
+    </div>
+    <div class="header-icons">
+      <button class="icon-btn" id="accountBtn" aria-label="Account">
+        <svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7" stroke-linecap="round"/></svg>
+      </button>
+      <button class="icon-btn" id="wishlistBtn" aria-label="Wishlist">
+        <svg viewBox="0 0 24 24"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.6l-1-1a5.5 5.5 0 0 0-7.8 7.8l1 1L12 21l7.8-7.6 1-1a5.5 5.5 0 0 0 0-7.8z"/></svg>
+      </button>
+    </div>
+    <button class="cart-btn" id="cartBtn">
+      <svg viewBox="0 0 24 24"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+      Your Cart ▾
+      <span class="price" id="cartTotal">$1,290.00</span>
+    </button>
+  </div>
+</header>
+
+
+
+<!-- ─── HERO SECTION ────────────────────────────── -->
+<section class="hero-section">
+  <div class="hero-main">
+    <div class="hero-content">
+      <span class="hero-tag">100% Natural</span>
+      <h1 class="hero-title">Fresh<br>Smoothie &<br>Summer Juice</h1>
+      <p class="hero-desc">Cold-pressed from farm-fresh fruits — no sugar added, no preservatives. Just pure, vibrant goodness in every sip.</p>
+      <a href="#products" class="btn-shop">Shop Now</a>
+      <div class="hero-dots">
+        <div class="dot active"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+      </div>
+    </div>
+    <div class="hero-img-wrap">
+      <img
+        src="https://images.unsplash.com/photo-1570696516188-ade861b84a49?w=420&q=85&auto=format&fit=crop"
+        alt="Fresh colorful smoothies in glass bottles"
+        class="hero-product-img"
+      />
+    </div>
+  </div>
+
+  <div class="hero-side green">
+    <div class="side-text">
+      <div class="side-discount">20% Off</div>
+      <div class="side-label">SALE</div>
+      <div class="side-name">Fruits &<br>Vegetables</div>
+      <div class="side-link">Shop Collection →</div>
+    </div>
+    <img
+      src="https://images.unsplash.com/photo-1610832958506-aa56368176cf?w=160&q=80&auto=format&fit=crop"
+      alt="Fresh fruits and vegetables"
+      class="side-img"
+    />
+  </div>
+
+  <div class="hero-side blush">
+    <div class="side-text">
+      <div class="side-discount">15% Off</div>
+      <div class="side-label">SALE</div>
+      <div class="side-name">Baked<br>Products</div>
+      <div class="side-link">Shop Collection →</div>
+    </div>
+    <img
+      src="https://images.unsplash.com/photo-1555507036-ab1f4038808a?w=160&q=80&auto=format&fit=crop"
+      alt="Fresh baked croissants"
+      class="side-img"
+    />
+  </div>
+</section>
+
+<!-- ─── FEATURES BAR ────────────────────────────── -->
+<div class="features">
+  <div class="features-inner">
+    <div class="feature">
+      <div class="feat-icon">🚚</div>
+      <div class="feat-text"><strong>Free Delivery</strong><span>On orders over $50</span></div>
+    </div>
+    <div class="feature">
+      <div class="feat-icon">🌿</div>
+      <div class="feat-text"><strong>100% Organic</strong><span>Fresh from the farm</span></div>
+    </div>
+    <div class="feature">
+      <div class="feat-icon">🔒</div>
+      <div class="feat-text"><strong>Secure Payment</strong><span>100% secure checkout</span></div>
+    </div>
+    <div class="feature">
+      <div class="feat-icon">↩️</div>
+      <div class="feat-text"><strong>Easy Returns</strong><span>30-day return policy</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- ─── PRODUCTS SECTION ────────────────────────── -->
+<section class="products-section" id="products">
+  <div class="section-header">
+    <div>
+      <h2 class="section-title">Our <span>Products</span></h2>
+      <p class="section-subtitle">Fresh picks just for you — farm to your door</p>
+    </div>
+    <a href="all-products.html" class="view-all">View All Products →</a>
+  </div>
+
+  <div class="cat-tabs" id="catTabs">
+    <button class="cat-tab active" data-cat="all">All Products</button>
+    <button class="cat-tab" data-cat="fruits">🍎 Fruits</button>
+    <button class="cat-tab" data-cat="vegetables">🥦 Vegetables</button>
+    <button class="cat-tab" data-cat="dairy">🧀 Dairy</button>
+    <button class="cat-tab" data-cat="bakery">🍞 Bakery</button>
+    <button class="cat-tab" data-cat="beverages">🧃 Beverages</button>
+    <button class="cat-tab" data-cat="snacks">🍿 Snacks</button>
+    <button class="cat-tab" data-cat="meat">🥩 Meat & Fish</button>
+    <button class="cat-tab" data-cat="frozen">❄️ Frozen</button>
+  </div>
+
+  <div class="products-grid" id="productsGrid"></div>
+
+  <div class="load-more-wrap">
+    <button class="btn-load-more" id="loadMoreBtn">Load More Products</button>
+  </div>
+</section>
+
+<!-- ─── NEWSLETTER ──────────────────────────────── -->
+<div class="newsletter">
+  <h3>Stay Fresh with FoodMart</h3>
+  <p>Get weekly deals, new arrivals & recipes straight to your inbox.</p>
+  <div class="newsletter-form">
+    <input type="email" placeholder="Enter your email address…"/>
+    <button>Subscribe</button>
+  </div>
+</div>
+
+<!-- ─── FOOTER ──────────────────────────────────── -->
+<footer>
+  © 2026 <span>FoodMart</span> Grocery Store. All rights reserved.
+</footer>
+
+<!-- ─── PRODUCT DETAIL MODAL ───────────────────── -->
+<div class="modal-overlay" id="modalOverlay" role="dialog" aria-modal="true">
+  <div class="modal" id="modal">
+    <button class="modal-close" id="modalClose" aria-label="Close">✕</button>
+    <div class="modal-img-wrap">
+      <img id="modalImg" src="" alt=""/>
+      <div class="modal-badges" id="modalBadges"></div>
+    </div>
+    <div class="modal-info">
+      <div class="modal-category" id="modalCat"></div>
+      <div class="modal-name" id="modalName"></div>
+      <div class="modal-stars">
+        <span class="stars" id="modalStars"></span>
+        <span class="rating-count" id="modalReviews"></span>
+      </div>
+      <div class="modal-divider"></div>
+      <div class="modal-meta">
+        <div class="modal-meta-item"><strong id="modalWeight"></strong>Net Weight</div>
+        <div class="modal-meta-item"><strong id="modalOrganic"></strong>Organic</div>
+        <div class="modal-meta-item"><strong id="modalAvail">In Stock ✓</strong>Availability</div>
+      </div>
+      <div class="modal-desc" id="modalDesc"></div>
+      <div class="modal-price-row">
+        <span class="modal-price-now" id="modalPriceNow"></span>
+        <span class="modal-price-old" id="modalPriceOld"></span>
+        <span class="modal-save" id="modalSave"></span>
+      </div>
+      <div class="modal-qty-row">
+        <div class="qty-ctrl">
+          <button class="qty-btn" id="qtyMinus">−</button>
+          <span class="qty-num" id="qtyNum">1</span>
+          <button class="qty-btn" id="qtyPlus">+</button>
+        </div>
+        <button class="modal-add-btn" id="modalAddBtn">🛒 Add to Cart</button>
+        <button class="modal-wish-btn" id="modalWishBtn" title="Wishlist">♡</button>
+      </div>
+      <div class="modal-tags" id="modalTags"></div>
+    </div>
+  </div>
+</div>
+
+<!-- CART DRAWER -->
+<div class="cart-overlay" id="cartOverlay" aria-hidden="true"></div>
+<aside class="cart-drawer" id="cartDrawer" aria-label="Your personal cart" aria-hidden="true">
+  <div class="cart-drawer-head">
+    <div>
+      <span class="cart-kicker">Demo account</span>
+      <h3>Your Cart</h3>
+    </div>
+    <button class="cart-close" id="cartClose" aria-label="Close cart">x</button>
+  </div>
+
+  <div class="cart-user">
+    <div class="cart-avatar" id="cartAvatar">S</div>
+    <div>
+      <strong id="cartUserName">Sophia Green</strong>
+      <span id="cartUserEmail">sophia@foodmart.demo</span>
+    </div>
+  </div>
+
+  <div class="cart-items" id="cartItems"></div>
+
+  <div class="cart-empty" id="cartEmpty">
+    <strong>Your cart is empty</strong>
+    <span>Add fresh products and they will show here for this account.</span>
+  </div>
+
+  <div class="cart-summary">
+    <div><span>Subtotal</span><strong id="cartSubtotal">$0.00</strong></div>
+    <div><span>Delivery</span><strong id="cartDelivery">Free</strong></div>
+    <div class="cart-summary-total"><span>Total</span><strong id="cartGrandTotal">$0.00</strong></div>
+    <button class="clear-cart-btn" id="clearCartBtn">Remove all products</button>
+    <button class="checkout-btn" id="checkoutBtn">Checkout</button>
+  </div>
+</aside>
+
+<!-- ─── TOAST ───────────────────────────────────── -->
+<div class="toast" id="toast">🛒 <span id="toastMsg">Added to cart!</span></div>
+
+<script>
+  const ALL_PRODUCTS = [
+    // FRUITS
+    { id:1,  cat:'fruits',     img:'https://images.unsplash.com/photo-1567306226416-28f0efdc88ce?w=400&q=80&auto=format&fit=crop', name:'Red Apple',          weight:'1 kg',   price:3.99,  old:5.49,  stars:5, reviews:128, badge:'sale',    organic:true  },
+    { id:2,  cat:'fruits',     img:'https://images.unsplash.com/photo-1603833665858-e61d17a86224?w=400&q=80&auto=format&fit=crop', name:'Organic Banana',     weight:'500 g',  price:2.49,  old:null,  stars:4, reviews:96,  badge:'organic', organic:true  },
+    { id:3,  cat:'fruits',     img:'https://images.unsplash.com/photo-1464965911861-746a04b4bca6?w=400&q=80&auto=format&fit=crop', name:'Strawberries',       weight:'250 g',  price:4.99,  old:6.99,  stars:5, reviews:214, badge:'hot',     organic:false },
+    { id:4,  cat:'fruits',     img:'https://images.unsplash.com/photo-1537640538966-79f369143f8f?w=400&q=80&auto=format&fit=crop', name:'Red Grapes',         weight:'500 g',  price:5.49,  old:null,  stars:4, reviews:77,  badge:'new',     organic:false },
+    { id:5,  cat:'fruits',     img:'https://images.unsplash.com/photo-1611080626919-7cf5a9dbab12?w=400&q=80&auto=format&fit=crop', name:'Navel Oranges',      weight:'1 kg',   price:3.29,  old:4.49,  stars:4, reviews:55,  badge:'sale',    organic:false },
+    { id:6,  cat:'fruits',     img:'https://images.unsplash.com/photo-1601493700631-2b16ec4b4716?w=400&q=80&auto=format&fit=crop', name:'Alphonso Mango',     weight:'2 pcs',  price:6.99,  old:null,  stars:5, reviews:183, badge:'hot',     organic:true  },
+    { id:7,  cat:'fruits',     img:'https://images.unsplash.com/photo-1582476153994-a65e4c6a15a4?w=400&q=80&auto=format&fit=crop', name:'Fresh Lemon',        weight:'3 pcs',  price:1.99,  old:2.49,  stars:4, reviews:42,  badge:null,      organic:false },
+    { id:8,  cat:'fruits',     img:'https://images.unsplash.com/photo-1629226012810-f659c2e6b3ee?w=400&q=80&auto=format&fit=crop', name:'Peach',              weight:'500 g',  price:4.49,  old:null,  stars:4, reviews:63,  badge:'new',     organic:true  },
+    { id:9,  cat:'fruits',     img:'https://images.unsplash.com/photo-1550258987-190a2d41a8ba?w=400&q=80&auto=format&fit=crop', name:'Fresh Pineapple',    weight:'1 pc',   price:3.79,  old:5.29,  stars:5, reviews:101, badge:'sale',    organic:false },
+    { id:10, cat:'fruits',     img:'https://images.unsplash.com/photo-1498557850523-fd3d118b962e?w=400&q=80&auto=format&fit=crop', name:'Blueberries',        weight:'200 g',  price:5.99,  old:7.49,  stars:5, reviews:247, badge:'hot',     organic:true  },
+    // VEGETABLES
+    { id:11, cat:'vegetables', img:'https://images.unsplash.com/photo-1459411621453-7b03977f4bfc?w=400&q=80&auto=format&fit=crop', name:'Broccoli',           weight:'500 g',  price:2.29,  old:3.49,  stars:4, reviews:88,  badge:'sale',    organic:true  },
+    { id:12, cat:'vegetables', img:'https://images.unsplash.com/photo-1561136594-7f68813d8210?w=400&q=80&auto=format&fit=crop', name:'Cherry Tomatoes',    weight:'500 g',  price:3.49,  old:null,  stars:5, reviews:162, badge:'organic', organic:true  },
+    { id:13, cat:'vegetables', img:'https://images.unsplash.com/photo-1598170845058-32b9d6a5da37?w=400&q=80&auto=format&fit=crop', name:'Carrots',            weight:'1 kg',   price:1.99,  old:2.79,  stars:4, reviews:74,  badge:null,      organic:false },
+    { id:14, cat:'vegetables', img:'https://images.unsplash.com/photo-1576045057995-568f588f82fb?w=400&q=80&auto=format&fit=crop', name:'Baby Spinach',       weight:'200 g',  price:2.79,  old:null,  stars:5, reviews:133, badge:'new',     organic:true  },
+    { id:15, cat:'vegetables', img:'https://images.unsplash.com/photo-1508747703725-719777637510?w=400&q=80&auto=format&fit=crop', name:'Red Onion',          weight:'1 kg',   price:1.49,  old:1.99,  stars:3, reviews:56,  badge:'sale',    organic:false },
+    { id:16, cat:'vegetables', img:'https://images.unsplash.com/photo-1518977676601-b53f82aba655?w=400&q=80&auto=format&fit=crop', name:'Bell Pepper Mix',    weight:'3 pcs',  price:3.99,  old:null,  stars:4, reviews:91,  badge:'hot',     organic:true  },
+    { id:17, cat:'vegetables', img:'https://images.unsplash.com/photo-1449300079323-02e209d9d3a6?w=400&q=80&auto=format&fit=crop', name:'Cucumber',           weight:'2 pcs',  price:1.79,  old:2.49,  stars:4, reviews:48,  badge:null,      organic:false },
+    { id:18, cat:'vegetables', img:'https://images.unsplash.com/photo-1551754655-cd27e38d2076?w=400&q=80&auto=format&fit=crop', name:'Sweet Corn',         weight:'4 pcs',  price:2.99,  old:3.99,  stars:5, reviews:109, badge:'sale',    organic:true  },
+    { id:19, cat:'vegetables', img:'https://images.unsplash.com/photo-1540148426945-6cf22a6b2383?w=400&q=80&auto=format&fit=crop', name:'Garlic Bulb',        weight:'200 g',  price:1.29,  old:null,  stars:4, reviews:37,  badge:null,      organic:false },
+    { id:20, cat:'vegetables', img:'https://images.unsplash.com/photo-1518977822534-7049a61ee0c2?w=400&q=80&auto=format&fit=crop', name:'Baby Potatoes',      weight:'1 kg',   price:2.49,  old:3.29,  stars:4, reviews:72,  badge:null,      organic:true  },
+    // DAIRY
+    { id:21, cat:'dairy',      img:'https://images.unsplash.com/photo-1563636619-e9143da7973b?w=400&q=80&auto=format&fit=crop', name:'Whole Milk',         weight:'1 L',    price:2.99,  old:null,  stars:5, reviews:209, badge:'organic', organic:true  },
+    { id:22, cat:'dairy',      img:'https://images.unsplash.com/photo-1486297678162-eb2a19b0a3d5?w=400&q=80&auto=format&fit=crop', name:'Cheddar Cheese',     weight:'200 g',  price:4.99,  old:6.49,  stars:5, reviews:155, badge:'sale',    organic:false },
+    { id:23, cat:'dairy',      img:'https://images.unsplash.com/photo-1582722872445-44dc5f7e3c8f?w=400&q=80&auto=format&fit=crop', name:'Free Range Eggs',    weight:'12 pcs', price:5.49,  old:null,  stars:5, reviews:318, badge:'hot',     organic:true  },
+    { id:24, cat:'dairy',      img:'https://images.unsplash.com/photo-1589985270826-4b7bb135bc9d?w=400&q=80&auto=format&fit=crop', name:'Unsalted Butter',    weight:'250 g',  price:3.79,  old:4.99,  stars:4, reviews:84,  badge:'sale',    organic:false },
+    { id:25, cat:'dairy',      img:'https://images.unsplash.com/photo-1488477181946-6428a0291777?w=400&q=80&auto=format&fit=crop', name:'Greek Yogurt',       weight:'500 g',  price:4.29,  old:null,  stars:5, reviews:196, badge:'new',     organic:true  },
+    { id:26, cat:'dairy',      img:'https://images.unsplash.com/photo-1550583724-b2692b85b150?w=400&q=80&auto=format&fit=crop', name:'Sour Cream',         weight:'200 g',  price:2.49,  old:3.19,  stars:4, reviews:61,  badge:null,      organic:false },
+    // BAKERY
+    { id:27, cat:'bakery',     img:'https://images.unsplash.com/photo-1585478259715-876acc5be8eb?w=400&q=80&auto=format&fit=crop', name:'Sourdough Bread',    weight:'800 g',  price:5.99,  old:7.49,  stars:5, reviews:274, badge:'hot',     organic:false },
+    { id:28, cat:'bakery',     img:'https://images.unsplash.com/photo-1555507036-ab1f4038808a?w=400&q=80&auto=format&fit=crop', name:'Butter Croissant',   weight:'4 pcs',  price:4.49,  old:null,  stars:5, reviews:187, badge:'new',     organic:false },
+    { id:29, cat:'bakery',     img:'https://images.unsplash.com/photo-1607958996333-41aef7caefaa?w=400&q=80&auto=format&fit=crop', name:'Blueberry Muffin',   weight:'6 pcs',  price:6.99,  old:8.99,  stars:4, reviews:112, badge:'sale',    organic:false },
+    { id:30, cat:'bakery',     img:'https://images.unsplash.com/photo-1549931319-a545dcf3bc73?w=400&q=80&auto=format&fit=crop', name:'Baguette',           weight:'350 g',  price:2.99,  old:null,  stars:4, reviews:93,  badge:null,      organic:false },
+    { id:31, cat:'bakery',     img:'https://images.unsplash.com/photo-1551024709-8f23befc6f87?w=400&q=80&auto=format&fit=crop', name:'Glazed Doughnuts',   weight:'6 pcs',  price:5.49,  old:6.99,  stars:4, reviews:141, badge:'sale',    organic:false },
+    { id:32, cat:'bakery',     img:'https://images.unsplash.com/photo-1621303837174-89787a7d4729?w=400&q=80&auto=format&fit=crop', name:'Carrot Cake Slice',  weight:'1 pc',   price:3.99,  old:null,  stars:5, reviews:88,  badge:'new',     organic:false },
+    // BEVERAGES
+    { id:33, cat:'beverages',  img:'https://images.unsplash.com/photo-1621506289937-a8e4df240d0b?w=400&q=80&auto=format&fit=crop', name:'Orange Juice',       weight:'1 L',    price:3.49,  old:4.99,  stars:5, reviews:231, badge:'sale',    organic:true  },
+    { id:34, cat:'beverages',  img:'https://images.unsplash.com/photo-1461023058943-07fcbe16d735?w=400&q=80&auto=format&fit=crop', name:'Cold Brew Coffee',   weight:'500 ml', price:5.99,  old:null,  stars:5, reviews:178, badge:'hot',     organic:false },
+    { id:35, cat:'beverages',  img:'https://images.unsplash.com/photo-1556679343-c7306c1976bc?w=400&q=80&auto=format&fit=crop', name:'Matcha Green Tea',   weight:'20 bags', price:7.99,  old:9.99,  stars:5, reviews:143, badge:'sale',    organic:true  },
+    { id:36, cat:'beverages',  img:'https://images.unsplash.com/photo-1559839914-17aae19cec71?w=400&q=80&auto=format&fit=crop', name:'Sparkling Water',    weight:'1.5 L',  price:1.99,  old:null,  stars:4, reviews:67,  badge:null,      organic:false },
+    { id:37, cat:'beverages',  img:'https://images.unsplash.com/photo-1505252585461-04db1eb84625?w=400&q=80&auto=format&fit=crop', name:'Mango Smoothie',     weight:'300 ml', price:4.49,  old:5.99,  stars:5, reviews:204, badge:'hot',     organic:true  },
+    { id:38, cat:'beverages',  img:'https://images.unsplash.com/photo-1544787219-7f47ccb76574?w=400&q=80&auto=format&fit=crop', name:'Chamomile Tea',      weight:'25 bags', price:4.99,  old:null,  stars:4, reviews:88,  badge:'new',     organic:true  },
+    // SNACKS
+    { id:39, cat:'snacks',     img:'https://images.unsplash.com/photo-1585060544812-6b45742d762f?w=400&q=80&auto=format&fit=crop', name:'Popcorn Sea Salt',   weight:'150 g',  price:2.99,  old:3.99,  stars:4, reviews:156, badge:'sale',    organic:false },
+    { id:40, cat:'snacks',     img:'https://images.unsplash.com/photo-1567088286716-3ca8dd7b1a55?w=400&q=80&auto=format&fit=crop', name:'Mixed Nuts',         weight:'250 g',  price:7.99,  old:null,  stars:5, reviews:223, badge:'hot',     organic:true  },
+    { id:41, cat:'snacks',     img:'https://images.unsplash.com/photo-1606312619070-d48b4c652a52?w=400&q=80&auto=format&fit=crop', name:'Dark Chocolate 70%', weight:'100 g',  price:3.49,  old:4.49,  stars:5, reviews:297, badge:'sale',    organic:false },
+    { id:42, cat:'snacks',     img:'https://images.unsplash.com/photo-1577219491135-ce391730fb2c?w=400&q=80&auto=format&fit=crop', name:'Hummus Classic',     weight:'200 g',  price:4.29,  old:null,  stars:4, reviews:119, badge:'new',     organic:true  },
+    { id:43, cat:'snacks',     img:'https://images.unsplash.com/photo-1581001423637-e55f4e19a9c7?w=400&q=80&auto=format&fit=crop', name:'Pretzels',           weight:'200 g',  price:2.79,  old:3.49,  stars:4, reviews:74,  badge:null,      organic:false },
+    { id:44, cat:'snacks',     img:'https://images.unsplash.com/photo-1499636136210-6f4ee915583e?w=400&q=80&auto=format&fit=crop', name:'Oat & Honey Cookies',weight:'300 g',  price:4.99,  old:6.49,  stars:5, reviews:168, badge:'sale',    organic:false },
+    // MEAT & FISH
+    { id:45, cat:'meat',       img:'https://images.unsplash.com/photo-1603048588665-791ca8aea617?w=400&q=80&auto=format&fit=crop', name:'Ribeye Steak',       weight:'300 g',  price:14.99, old:18.99, stars:5, reviews:142, badge:'sale',    organic:false },
+    { id:46, cat:'meat',       img:'https://images.unsplash.com/photo-1604503468506-a8da13d11d36?w=400&q=80&auto=format&fit=crop', name:'Chicken Breast',     weight:'500 g',  price:7.49,  old:null,  stars:4, reviews:187, badge:'hot',     organic:true  },
+    { id:47, cat:'meat',       img:'https://images.unsplash.com/photo-1606851091851-e8c8c0fca5ba?w=400&q=80&auto=format&fit=crop', name:'Smoked Bacon',       weight:'200 g',  price:5.99,  old:7.49,  stars:5, reviews:211, badge:'sale',    organic:false },
+    { id:48, cat:'meat',       img:'https://images.unsplash.com/photo-1559742811-822873691df8?w=400&q=80&auto=format&fit=crop', name:'Atlantic Salmon',    weight:'250 g',  price:9.99,  old:null,  stars:5, reviews:163, badge:'new',     organic:false },
+    { id:49, cat:'meat',       img:'https://images.unsplash.com/photo-1565680018434-b513d5e5fd47?w=400&q=80&auto=format&fit=crop', name:'Tiger Prawns',       weight:'300 g',  price:11.99, old:14.99, stars:5, reviews:97,  badge:'sale',    organic:false },
+    { id:50, cat:'meat',       img:'https://images.unsplash.com/photo-1547592166-23ac45744acd?w=400&q=80&auto=format&fit=crop', name:'Ground Turkey',      weight:'400 g',  price:8.49,  old:null,  stars:4, reviews:76,  badge:null,      organic:true  },
+    // FROZEN
+    { id:51, cat:'frozen',     img:'https://images.unsplash.com/photo-1513104890138-7c749659a591?w=400&q=80&auto=format&fit=crop', name:'Margherita Pizza',   weight:'400 g',  price:6.99,  old:8.99,  stars:4, reviews:134, badge:'sale',    organic:false },
+    { id:52, cat:'frozen',     img:'https://images.unsplash.com/photo-1464965911861-746a04b4bca6?w=400&q=80&auto=format&fit=crop', name:'Frozen Mixed Berries',weight:'500 g', price:5.49,  old:null,  stars:5, reviews:189, badge:'hot',     organic:true  },
+    { id:53, cat:'frozen',     img:'https://images.unsplash.com/photo-1563245372-f21724e3856d?w=400&q=80&auto=format&fit=crop', name:'Chicken Dumplings',  weight:'300 g',  price:7.29,  old:9.49,  stars:4, reviews:108, badge:'sale',    organic:false },
+    { id:54, cat:'frozen',     img:'https://images.unsplash.com/photo-1563805042-7684c019e1cb?w=400&q=80&auto=format&fit=crop', name:'Vanilla Ice Cream',  weight:'500 ml', price:5.99,  old:null,  stars:5, reviews:256, badge:'new',     organic:false },
+    { id:55, cat:'frozen',     img:'https://images.unsplash.com/photo-1626700051175-6818013e1d4f?w=400&q=80&auto=format&fit=crop', name:'Veggie Burrito',     weight:'250 g',  price:4.99,  old:6.49,  stars:4, reviews:82,  badge:'sale',    organic:true  },
+    { id:56, cat:'frozen',     img:'https://images.unsplash.com/photo-1585325701954-3d72fae99b95?w=400&q=80&auto=format&fit=crop', name:'Crispy Fries',       weight:'750 g',  price:3.99,  old:null,  stars:4, reviews:147, badge:null,      organic:false },
+    { id:57, cat:'fruits',     img:'https://images.unsplash.com/photo-1571771894821-ce9b6c11b08e?w=400&q=80&auto=format&fit=crop', name:'Kiwi Fruit',         weight:'6 pcs',  price:4.29,  old:5.49,  stars:5, reviews:118, badge:'new',     organic:true  },
+    { id:58, cat:'fruits',     img:'https://images.unsplash.com/photo-1619566636858-adf3ef46400b?w=400&q=80&auto=format&fit=crop', name:'Green Pears',        weight:'1 kg',   price:3.69,  old:null,  stars:4, reviews:86,  badge:null,      organic:false },
+    { id:59, cat:'vegetables', img:'https://images.unsplash.com/photo-1615485290382-441e4d049cb5?w=400&q=80&auto=format&fit=crop', name:'Purple Cabbage',     weight:'1 pc',   price:2.19,  old:2.99,  stars:4, reviews:64,  badge:'sale',    organic:true  },
+    { id:60, cat:'vegetables', img:'https://images.unsplash.com/photo-1518843875459-f738682238a6?w=400&q=80&auto=format&fit=crop', name:'Green Beans',        weight:'500 g',  price:2.89,  old:null,  stars:5, reviews:93,  badge:'organic', organic:true  },
+    { id:61, cat:'dairy',      img:'https://images.unsplash.com/photo-1628088062854-d1870b4553da?w=400&q=80&auto=format&fit=crop', name:'Mozzarella Ball',    weight:'125 g',  price:3.99,  old:4.99,  stars:5, reviews:132, badge:'sale',    organic:false },
+    { id:62, cat:'dairy',      img:'https://images.unsplash.com/photo-1571212515416-fef01fc43637?w=400&q=80&auto=format&fit=crop', name:'Fresh Cream',        weight:'250 ml', price:2.99,  old:null,  stars:4, reviews:54,  badge:null,      organic:false },
+    { id:63, cat:'bakery',     img:'https://images.unsplash.com/photo-1509440159596-0249088772ff?w=400&q=80&auto=format&fit=crop', name:'Whole Wheat Loaf',   weight:'700 g',  price:4.29,  old:5.49,  stars:4, reviews:103, badge:'new',     organic:false },
+    { id:64, cat:'bakery',     img:'https://images.unsplash.com/photo-1608198093002-ad4e005484ec?w=400&q=80&auto=format&fit=crop', name:'Cinnamon Rolls',     weight:'4 pcs',  price:5.99,  old:7.49,  stars:5, reviews:189, badge:'hot',     organic:false },
+    { id:65, cat:'beverages',  img:'https://images.unsplash.com/photo-1600271886742-f049cd451bba?w=400&q=80&auto=format&fit=crop', name:'Lemon Iced Tea',     weight:'1 L',    price:3.29,  old:null,  stars:4, reviews:77,  badge:'new',     organic:true  },
+    { id:66, cat:'beverages',  img:'https://images.unsplash.com/photo-1622597467836-f3285f2131b8?w=400&q=80&auto=format&fit=crop', name:'Berry Smoothie',     weight:'350 ml', price:4.79,  old:5.99,  stars:5, reviews:146, badge:'hot',     organic:true  },
+    { id:67, cat:'snacks',     img:'https://images.unsplash.com/photo-1621939514649-280e2ee25f60?w=400&q=80&auto=format&fit=crop', name:'Granola Bars',       weight:'6 pcs',  price:4.49,  old:null,  stars:4, reviews:91,  badge:null,      organic:true  },
+    { id:68, cat:'snacks',     img:'https://images.unsplash.com/photo-1599490659213-e2b9527bd087?w=400&q=80&auto=format&fit=crop', name:'Banana Chips',       weight:'180 g',  price:2.99,  old:3.79,  stars:4, reviews:68,  badge:'sale',    organic:false },
+    { id:69, cat:'meat',       img:'https://images.unsplash.com/photo-1607623814075-e51df1bdc82f?w=400&q=80&auto=format&fit=crop', name:'Pork Chops',         weight:'500 g',  price:8.99,  old:10.99, stars:4, reviews:83,  badge:'sale',    organic:false },
+    { id:70, cat:'meat',       img:'https://images.unsplash.com/photo-1615141982883-c7ad0e69fd62?w=400&q=80&auto=format&fit=crop', name:'Cod Fillet',         weight:'300 g',  price:10.49, old:null,  stars:5, reviews:121, badge:'new',     organic:false },
+    { id:71, cat:'frozen',     img:'https://images.unsplash.com/photo-1590080875515-8a3a8dc5735e?w=400&q=80&auto=format&fit=crop', name:'Frozen Peas',        weight:'500 g',  price:2.49,  old:null,  stars:4, reviews:57,  badge:null,      organic:true  },
+    { id:72, cat:'frozen',     img:'https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=400&q=80&auto=format&fit=crop', name:'Chocolate Cake',     weight:'650 g',  price:9.99,  old:12.99, stars:5, reviews:203, badge:'hot',     organic:false },
+  ];
+
+  let currentCat   = 'all';
+  let visibleCount = 10;
+  let cartItems    = [];
+  let wishSet      = new Set();
+  const CART_KEY = 'foodmart_demo_cart';
+  const WISH_KEY = 'foodmart_demo_wishlist';
+  const ACCOUNT_KEY = 'foodmart_demo_account';
+  const DEMO_ACCOUNT = {
+    name: 'Sophia Green',
+    email: 'sophia@foodmart.demo'
+  };
+
+  function starHTML(n) { return '★'.repeat(n) + '☆'.repeat(5 - n); }
+
+  function badgeHTML(p) {
+    if (!p.badge && !p.organic) return '';
+    let out = '<div class="badges">';
+    if (p.badge === 'sale')    out += '<span class="badge badge-sale">Sale</span>';
+    if (p.badge === 'new')     out += '<span class="badge badge-new">New</span>';
+    if (p.badge === 'hot')     out += '<span class="badge badge-hot">🔥 Hot</span>';
+    if (p.badge === 'organic') out += '<span class="badge badge-organic">Organic</span>';
+    out += '</div>';
+    return out;
+  }
+
+  function cardHTML(p) {
+    const wished = wishSet.has(p.id);
+    return `
+      <div class="product-card" data-id="${p.id}">
+        ${badgeHTML(p)}
+        <button class="card-wish ${wished ? 'wished' : ''}" title="Add to Wishlist">${wished ? '♥' : '♡'}</button>
+        <div class="card-img">
+          <img src="${p.img}" alt="${p.name}" loading="lazy"
+            onerror="this.parentElement.style.fontSize='3rem';this.remove()"/>
+        </div>
+        <div class="card-body">
+          <div class="card-category">${p.cat}</div>
+          <div class="card-name">${p.name}</div>
+          <div class="card-weight">${p.weight}</div>
+          <div class="card-stars">
+            <span class="stars">${starHTML(p.stars)}</span>
+            <span class="rating-count">(${p.reviews})</span>
+          </div>
+          <div class="card-footer">
+            <div class="card-price">
+              <span class="price-now">$${p.price.toFixed(2)}</span>
+              ${p.old ? `<span class="price-old">$${p.old.toFixed(2)}</span>` : ''}
+            </div>
+            <button class="add-btn" data-name="${p.name}" data-price="${p.price}" title="Add to cart">+</button>
+          </div>
+        </div>
+      </div>`;
+  }
+
+  function getFiltered() {
+    const q = document.getElementById('searchInput').value.toLowerCase();
+    return ALL_PRODUCTS.filter(p =>
+      (currentCat === 'all' || p.cat === currentCat) &&
+      (!q || p.name.toLowerCase().includes(q))
+    );
+  }
+
+  function getDemoAccount() {
+    const saved = localStorage.getItem(ACCOUNT_KEY);
+    if (saved) return JSON.parse(saved);
+    localStorage.setItem(ACCOUNT_KEY, JSON.stringify(DEMO_ACCOUNT));
+    return DEMO_ACCOUNT;
+  }
+
+  function loadCart() {
+    cartItems = JSON.parse(localStorage.getItem(CART_KEY) || '[]');
+  }
+
+  function saveCart() {
+    localStorage.setItem(CART_KEY, JSON.stringify(cartItems));
+  }
+
+  function loadWishlist() {
+    const saved = JSON.parse(localStorage.getItem(WISH_KEY) || '[]');
+    wishSet = new Set(saved.map(item => typeof item === 'object' ? item.id : item));
+  }
+
+  function saveWishlist() {
+    const products = [...wishSet]
+      .map(id => ALL_PRODUCTS.find(product => product.id === id))
+      .filter(Boolean);
+    localStorage.setItem(WISH_KEY, JSON.stringify(products));
+  }
+
+  function toggleWishlist(productId) {
+    if (wishSet.has(productId)) {
+      wishSet.delete(productId);
+    } else {
+      wishSet.add(productId);
+    }
+    saveWishlist();
+    render();
+  }
+
+  function cartSubtotal() {
+    return cartItems.reduce((sum, item) => sum + item.price * item.qty, 0);
+  }
+
+  function updateCartTotal() {
+    const total = cartSubtotal();
+    document.getElementById('cartTotal').textContent = '$' + total.toFixed(2);
+    document.getElementById('cartSubtotal').textContent = '$' + total.toFixed(2);
+    document.getElementById('cartGrandTotal').textContent = '$' + total.toFixed(2);
+  }
+
+  function addToCart(product, qty = 1) {
+    const existing = cartItems.find(item => item.id === product.id);
+    if (existing) {
+      existing.qty += qty;
+    } else {
+      cartItems.push({
+        id: product.id,
+        name: product.name,
+        price: product.price,
+        img: product.img,
+        weight: product.weight,
+        qty: qty
+      });
+    }
+    saveCart();
+    renderCartDrawer();
+    updateCartTotal();
+  }
+
+  function changeCartQty(id, amount) {
+    const item = cartItems.find(product => product.id === id);
+    if (!item) return;
+    item.qty += amount;
+    if (item.qty <= 0) {
+      cartItems = cartItems.filter(product => product.id !== id);
+    }
+    saveCart();
+    renderCartDrawer();
+    updateCartTotal();
+  }
+
+  function removeCartItem(id) {
+    cartItems = cartItems.filter(product => product.id !== id);
+    saveCart();
+    renderCartDrawer();
+    updateCartTotal();
+  }
+
+  function clearCart() {
+    if (!cartItems.length) {
+      showToast('Your cart is already empty');
+      return;
+    }
+    cartItems = [];
+    saveCart();
+    renderCartDrawer();
+    updateCartTotal();
+    showToast('Removed all products from your cart');
+  }
+
+  function renderCartDrawer() {
+    const account = getDemoAccount();
+    const initials = account.name.split(' ').map(part => part[0]).join('').slice(0, 2);
+    document.getElementById('cartUserName').textContent = account.name;
+    document.getElementById('cartUserEmail').textContent = account.email;
+    document.getElementById('cartAvatar').textContent = initials;
+
+    const list = document.getElementById('cartItems');
+    const empty = document.getElementById('cartEmpty');
+    empty.style.display = cartItems.length ? 'none' : 'flex';
+    document.getElementById('clearCartBtn').disabled = cartItems.length === 0;
+    list.innerHTML = cartItems.map(item => `
+      <div class="cart-item">
+        <img src="${item.img}" alt="${item.name}"/>
+        <div class="cart-item-info">
+          <strong>${item.name}</strong>
+          <span>${item.weight} - $${item.price.toFixed(2)}</span>
+          <div class="cart-line-actions">
+            <button type="button" data-action="decrease" data-id="${item.id}">-</button>
+            <span>${item.qty}</span>
+            <button type="button" data-action="increase" data-id="${item.id}">+</button>
+            <button type="button" class="cart-remove" data-action="remove" data-id="${item.id}">Remove</button>
+          </div>
+        </div>
+        <strong class="cart-line-total">$${(item.price * item.qty).toFixed(2)}</strong>
+      </div>
+    `).join('');
+  }
+
+  function openCartDrawer() {
+    renderCartDrawer();
+    updateCartTotal();
+    document.getElementById('cartOverlay').classList.add('open');
+    document.getElementById('cartDrawer').classList.add('open');
+    document.getElementById('cartOverlay').setAttribute('aria-hidden', 'false');
+    document.getElementById('cartDrawer').setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeCartDrawer() {
+    document.getElementById('cartOverlay').classList.remove('open');
+    document.getElementById('cartDrawer').classList.remove('open');
+    document.getElementById('cartOverlay').setAttribute('aria-hidden', 'true');
+    document.getElementById('cartDrawer').setAttribute('aria-hidden', 'true');
+    if (!document.getElementById('modalOverlay').classList.contains('open')) {
+      document.body.style.overflow = '';
+    }
+  }
+
+  function render() {
+    const filtered = getFiltered();
+    const slice = filtered.slice(0, visibleCount);
+    document.getElementById('productsGrid').innerHTML = slice.map(cardHTML).join('');
+    document.getElementById('loadMoreBtn').style.display =
+      visibleCount >= filtered.length ? 'none' : 'block';
+    attachCardEvents();
+  }
+
+  function attachCardEvents() {
+    document.querySelectorAll('.product-card').forEach(card => {
+      card.addEventListener('click', e => {
+        if (e.target.closest('.add-btn') || e.target.closest('.card-wish')) return;
+        const p = ALL_PRODUCTS.find(x => x.id === parseInt(card.dataset.id));
+        if (p) openModal(p);
+      });
+    });
+    document.querySelectorAll('.add-btn').forEach(btn => {
+      btn.addEventListener('click', e => {
+        e.stopPropagation();
+        const product = ALL_PRODUCTS.find(x => x.name === btn.dataset.name);
+        if (product) addToCart(product);
+        showToast('🛒 "' + btn.dataset.name + '" added to cart!');
+        btn.textContent = '✓';
+        btn.style.background = 'var(--green)';
+        setTimeout(() => { btn.textContent = '+'; btn.style.background = ''; }, 1200);
+      });
+    });
+    document.querySelectorAll('.card-wish').forEach(btn => {
+      btn.addEventListener('click', e => {
+        e.stopPropagation();
+        const card = btn.closest('.product-card');
+        const productId = parseInt(card.dataset.id);
+        toggleWishlist(productId);
+        const product = ALL_PRODUCTS.find(p => p.id === productId);
+        showToast((wishSet.has(productId) ? '♥ Added ' : 'Removed ') + (product ? product.name : 'item') + ' from wishlist');
+      });
+    });
+  }
+
+  let toastTimer;
+  function showToast(msg) {
+    const t = document.getElementById('toast');
+    document.getElementById('toastMsg').textContent = msg;
+    t.classList.add('show');
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(() => t.classList.remove('show'), 2200);
+  }
+
+  document.getElementById('catTabs').addEventListener('click', e => {
+    const tab = e.target.closest('.cat-tab');
+    if (!tab) return;
+    document.querySelectorAll('.cat-tab').forEach(t => t.classList.remove('active'));
+    tab.classList.add('active');
+    currentCat = tab.dataset.cat;
+    visibleCount = 10;
+    render();
+  });
+
+  document.getElementById('loadMoreBtn').addEventListener('click', () => {
+    visibleCount += 10;
+    render();
+  });
+
+  document.getElementById('searchInput').addEventListener('input', () => {
+    visibleCount = 10;
+    render();
+  });
+
+  document.getElementById('cartBtn').addEventListener('click', openCartDrawer);
+  document.getElementById('cartClose').addEventListener('click', closeCartDrawer);
+  document.getElementById('cartOverlay').addEventListener('click', closeCartDrawer);
+  document.getElementById('cartItems').addEventListener('click', e => {
+    const btn = e.target.closest('button[data-action]');
+    if (!btn) return;
+    const id = parseInt(btn.dataset.id);
+    if (btn.dataset.action === 'increase') changeCartQty(id, 1);
+    if (btn.dataset.action === 'decrease') changeCartQty(id, -1);
+    if (btn.dataset.action === 'remove') removeCartItem(id);
+  });
+  document.getElementById('checkoutBtn').addEventListener('click', () => {
+    showToast('Demo checkout ready for ' + getDemoAccount().name + '!');
+  });
+  document.getElementById('clearCartBtn').addEventListener('click', clearCart);
+  document.getElementById('accountBtn').addEventListener('click', () => {
+    const account = localStorage.getItem(ACCOUNT_KEY);
+    window.location.href = account ? 'account.html' : 'register.html';
+  });
+  document.getElementById('wishlistBtn').addEventListener('click', () => {
+    const account = localStorage.getItem(ACCOUNT_KEY);
+    window.location.href = account ? 'account.html#wishlist' : 'register.html';
+  });
+
+  document.querySelectorAll('.dot').forEach((dot, i, dots) => {
+    dot.addEventListener('click', () => {
+      dots.forEach(d => d.classList.remove('active'));
+      dot.classList.add('active');
+    });
+  });
+
+  loadCart();
+  loadWishlist();
+  renderCartDrawer();
+  updateCartTotal();
+  render();
+</script>
+<script>
+  /* ── Product descriptions ── */
+  const DESCRIPTIONS = {
+    fruits:     'Sun-ripened and hand-picked at peak freshness. Delivered directly from partner farms within 24 hours of harvest for maximum nutrition and flavour.',
+    vegetables: 'Grown using sustainable farming practices, these vegetables are harvested at their nutritional peak and cold-chain delivered to preserve crunch and vitamins.',
+    dairy:      'Sourced from grass-fed cows on certified farms. No artificial hormones or antibiotics — just pure, creamy goodness with every serving.',
+    bakery:     'Baked fresh each morning by our in-house bakers using traditional recipes and premium ingredients. Best enjoyed on the day of purchase.',
+    beverages:  'Crafted with high-quality ingredients and no artificial additives. Each sip is packed with natural flavour and goodness.',
+    snacks:     'Thoughtfully made with wholesome ingredients for guilt-free snacking. Perfect for on-the-go lifestyles or sharing moments.',
+    meat:       'Ethically sourced and hand-selected by our butchers. Each cut is carefully trimmed and vacuum-sealed for superior freshness.',
+    frozen:     'Flash-frozen at peak quality to lock in nutrients and taste. No preservatives — simply convenient, delicious food whenever you need it.',
+  };
+  const TAG_MAP = {
+    fruits:     ['🌿 Fresh', '🚚 Next-Day Delivery', '🌍 Sustainably Sourced'],
+    vegetables: ['🌱 Farm-Direct', '💧 Hydroponic Option', '🧪 Pesticide-Free'],
+    dairy:      ['🐄 Grass-Fed', '🥛 Cold-Chain', '🔬 Quality Tested'],
+    bakery:     ['🥐 Freshly Baked', '🍞 Artisan', '🧑‍🍳 House Recipe'],
+    beverages:  ['🧃 No Artificial Flavour', '🧊 Chilled Delivery', '♻️ Eco Packaging'],
+    snacks:     ['🌾 Wholesome', '🛡️ No Preservatives', '🤤 Fan Favourite'],
+    meat:       ['🏅 Hand-Selected', '🐄 Ethically Sourced', '❄️ Vacuum Sealed'],
+    frozen:     ['❄️ Flash-Frozen', '⏱️ Quick Cook', '🛡️ No Preservatives'],
+  };
+
+  let modalQty = 1;
+  let modalProduct = null;
+
+  function openModal(p) {
+    modalProduct = p;
+    modalQty = 1;
+    document.getElementById('qtyNum').textContent = 1;
+    document.getElementById('modalImg').src = p.img;
+    document.getElementById('modalImg').alt = p.name;
+    document.getElementById('modalCat').textContent = p.cat.charAt(0).toUpperCase() + p.cat.slice(1);
+    document.getElementById('modalName').textContent = p.name;
+    document.getElementById('modalStars').textContent = '★'.repeat(p.stars) + '☆'.repeat(5 - p.stars);
+    document.getElementById('modalReviews').textContent = '(' + p.reviews + ' reviews)';
+    document.getElementById('modalWeight').textContent = p.weight + '\u00a0\u00a0';
+    document.getElementById('modalOrganic').textContent = p.organic ? 'Yes ✓\u00a0\u00a0' : 'No\u00a0\u00a0';
+    document.getElementById('modalDesc').textContent = DESCRIPTIONS[p.cat] || 'A premium quality product selected with care.';
+    document.getElementById('modalPriceNow').textContent = '$' + p.price.toFixed(2);
+
+    const oldEl  = document.getElementById('modalPriceOld');
+    const saveEl = document.getElementById('modalSave');
+    if (p.old) {
+      oldEl.textContent = '$' + p.old.toFixed(2);
+      oldEl.style.display = '';
+      saveEl.textContent = 'Save ' + Math.round((1 - p.price / p.old) * 100) + '%';
+      saveEl.style.display = '';
+    } else {
+      oldEl.style.display = 'none';
+      saveEl.style.display = 'none';
+    }
+    document.getElementById('modalBadges').innerHTML = badgeHTML(p);
+    const tags = TAG_MAP[p.cat] || [];
+    document.getElementById('modalTags').innerHTML = tags.map(t => '<span class="modal-tag">' + t + '</span>').join('');
+    const wishBtn = document.getElementById('modalWishBtn');
+    wishBtn.textContent = wishSet.has(p.id) ? '♥' : '♡';
+    wishSet.has(p.id) ? wishBtn.classList.add('wished') : wishBtn.classList.remove('wished');
+
+    document.getElementById('modalOverlay').classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeModal() {
+    document.getElementById('modalOverlay').classList.remove('open');
+    document.body.style.overflow = '';
+  }
+
+  document.getElementById('modalClose').addEventListener('click', closeModal);
+  document.getElementById('modalOverlay').addEventListener('click', e => {
+    if (e.target === document.getElementById('modalOverlay')) closeModal();
+  });
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') closeCartDrawer(); });
+
+  document.getElementById('qtyMinus').addEventListener('click', () => {
+    if (modalQty > 1) { modalQty--; document.getElementById('qtyNum').textContent = modalQty; }
+  });
+  document.getElementById('qtyPlus').addEventListener('click', () => {
+    if (modalQty < 99) { modalQty++; document.getElementById('qtyNum').textContent = modalQty; }
+  });
+
+  document.getElementById('modalAddBtn').addEventListener('click', () => {
+    if (!modalProduct) return;
+    addToCart(modalProduct, modalQty);
+    showToast('🛒 ' + modalQty + '× "' + modalProduct.name + '" added to cart!');
+    const btn = document.getElementById('modalAddBtn');
+    btn.textContent = '✓ Added!';
+    btn.style.background = 'var(--green)';
+    setTimeout(() => { btn.textContent = '🛒 Add to Cart'; btn.style.background = ''; }, 1400);
+  });
+
+  document.getElementById('modalWishBtn').addEventListener('click', () => {
+    if (!modalProduct) return;
+    const btn = document.getElementById('modalWishBtn');
+    if (wishSet.has(modalProduct.id)) {
+      wishSet.delete(modalProduct.id);
+      btn.textContent = '♡'; btn.classList.remove('wished');
+      showToast('Removed "' + modalProduct.name + '" from wishlist');
+    } else {
+      wishSet.add(modalProduct.id);
+      btn.textContent = '♥'; btn.classList.add('wished');
+      showToast('♥ "' + modalProduct.name + '" added to wishlist');
+    }
+    saveWishlist();
+    render();
+  });
+</script>
+</body>
+</html>
