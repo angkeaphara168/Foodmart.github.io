@@ -1,0 +1,710 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FoodMart Admin Dashboard</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet" />
+  <script src="theme-toggle.js"></script>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body class="admin-dashboard-page">
+  <main class="admin-dashboard-layout">
+    <aside class="admin-dashboard-sidebar" aria-label="Admin navigation">
+      <a href="index.html" class="admin-dashboard-brand">
+        <span class="admin-brand-mark">FM</span>
+        <strong>FoodMart<span>Admin</span></strong>
+      </a>
+
+      <nav class="admin-dashboard-nav">
+        <a class="active" href="#overview"><span><i class="bx bx-grid-alt" aria-hidden="true"></i></span>Dashboard</a>
+        <a href="#orders"><span><i class="bx bx-receipt" aria-hidden="true"></i></span>Order</a>
+        <a href="#menus"><span><i class="bx bx-food-menu" aria-hidden="true"></i></span>Menus</a>
+        <a href="#customer"><span><i class="bx bx-user" aria-hidden="true"></i></span>Customer</a>
+        <a href="#analysis"><span><i class="bx bx-line-chart" aria-hidden="true"></i></span>Analysis</a>
+        <a href="#products"><span><i class="bx bx-store" aria-hidden="true"></i></span>Online Store</a>
+        <a href="account.html"><span><i class="bx bx-show" aria-hidden="true"></i></span>Customer View</a>
+        <a href="index.html"><span><i class="bx bx-home" aria-hidden="true"></i></span>Storefront</a>
+      </nav>
+
+      <section class="admin-sidebar-card">
+        <strong>Kitchen queue</strong>
+        <span id="sidebarQueueCount">0 active orders</span>
+        <a href="#orders">Review orders</a>
+      </section>
+    </aside>
+
+    <section class="admin-dashboard-main" id="overview">
+      <header class="admin-dashboard-topbar">
+        <label class="admin-search-shell">
+          <span>Search</span>
+          <input id="adminSearch" type="search" placeholder="Search products or category" />
+        </label>
+        <div class="admin-top-actions">
+          <button type="button" title="Fullscreen"><i class="bx bx-fullscreen" aria-hidden="true"></i></button>
+          <button type="button" title="Notifications"><i class="bx bx-bell" aria-hidden="true"></i></button>
+          <button type="button" title="Messages"><i class="bx bx-envelope" aria-hidden="true"></i></button>
+          <button type="button" title="Settings"><i class="bx bx-cog" aria-hidden="true"></i></button>
+        </div>
+        <div class="admin-hello">
+          <span>Hello, Admin</span>
+          <strong>FM</strong>
+        </div>
+      </header>
+
+      <section class="admin-kpi-grid" id="analysis">
+        <article class="admin-kpi-card">
+          <div>
+            <span>Total Menu</span>
+            <strong id="totalProducts">0</strong>
+          </div>
+          <div class="admin-ring ring-orange" style="--value: 82%"></div>
+        </article>
+        <article class="admin-kpi-card">
+          <div>
+            <span>Total Revenue</span>
+            <strong id="totalCartValue">$0.00</strong>
+          </div>
+          <div class="admin-ring ring-red" style="--value: 64%"></div>
+        </article>
+        <article class="admin-kpi-card">
+          <div>
+            <span>Total Orders</span>
+            <strong id="totalCartItems">0</strong>
+          </div>
+          <div class="admin-ring ring-coral" style="--value: 72%"></div>
+        </article>
+        <article class="admin-kpi-card">
+          <div>
+            <span>Total Customers</span>
+            <strong id="totalWishlist">0</strong>
+          </div>
+          <div class="admin-ring ring-amber" style="--value: 56%"></div>
+        </article>
+      </section>
+
+      <section class="admin-revenue-card">
+        <div class="admin-panel-head">
+          <div>
+            <h1>Daily Revenue</h1>
+            <span>FoodMart live browser data</span>
+          </div>
+          <div class="admin-revenue-total">
+            <strong id="dailyRevenueTotal">$0.00</strong>
+            <span>+1.5% than last week</span>
+          </div>
+        </div>
+        <svg class="admin-line-chart" viewBox="0 0 720 220" role="img" aria-label="Daily revenue line chart">
+          <defs>
+            <linearGradient id="adminRevenueFill" x1="0" x2="0" y1="0" y2="1">
+              <stop offset="0%" stop-color="#4aa3ff" stop-opacity=".36" />
+              <stop offset="100%" stop-color="#4aa3ff" stop-opacity="0" />
+            </linearGradient>
+          </defs>
+          <path d="M20 180 C90 150 125 155 165 130 C220 92 260 150 320 118 C380 84 420 142 482 104 C548 62 570 82 620 40 C660 16 690 28 705 20 L705 220 L20 220 Z" fill="url(#adminRevenueFill)" />
+          <path d="M20 180 C90 150 125 155 165 130 C220 92 260 150 320 118 C380 84 420 142 482 104 C548 62 570 82 620 40 C660 16 690 28 705 20" fill="none" stroke="#3f9bed" stroke-width="5" stroke-linecap="round" />
+          <g class="admin-chart-grid">
+            <path d="M20 40 H705 M20 80 H705 M20 120 H705 M20 160 H705 M20 200 H705" />
+          </g>
+        </svg>
+        <div class="admin-chart-days">
+          <span>Mon</span><span>Tue</span><span>Wed</span><span>Thu</span><span>Fri</span><span>Sat</span><span>Sun</span>
+        </div>
+      </section>
+
+      <section class="admin-favorites-card" id="menus">
+        <div class="admin-panel-head">
+          <div>
+            <h2>Favourite Items</h2>
+            <span>Popular customer picks</span>
+          </div>
+          <a href="all-products.html">View catalog</a>
+        </div>
+        <div class="admin-favorite-grid" id="favoriteItems"></div>
+      </section>
+
+      <section class="admin-analytics-grid">
+        <article class="admin-flow-card">
+          <div class="admin-panel-head compact">
+            <h2>Customer Flow</h2>
+            <span>Hourly visits</span>
+          </div>
+          <div class="admin-bar-chart" id="customerFlow"></div>
+        </article>
+
+        <article class="admin-flow-card">
+          <div class="admin-panel-head compact">
+            <h2>Order Overview</h2>
+            <span>Recent order value</span>
+          </div>
+          <svg class="admin-area-chart" viewBox="0 0 480 220" role="img" aria-label="Order overview chart">
+            <defs>
+              <linearGradient id="adminOrderFill" x1="0" x2="0" y1="0" y2="1">
+                <stop offset="0%" stop-color="#f36f3d" stop-opacity=".34" />
+                <stop offset="100%" stop-color="#f36f3d" stop-opacity="0" />
+              </linearGradient>
+            </defs>
+            <path d="M20 175 C58 70 95 62 128 116 C160 166 196 160 235 114 C270 72 302 64 332 94 C364 128 392 116 424 54 C448 20 466 32 474 42 L474 220 L20 220 Z" fill="url(#adminOrderFill)" />
+            <path d="M20 175 C58 70 95 62 128 116 C160 166 196 160 235 114 C270 72 302 64 332 94 C364 128 392 116 424 54 C448 20 466 32 474 42" fill="none" stroke="#ef6b3a" stroke-width="5" stroke-linecap="round" />
+          </svg>
+        </article>
+      </section>
+
+      <section class="admin-control-grid" id="orders">
+        <article class="admin-control-card wide">
+          <div class="admin-panel-head">
+            <div>
+              <h2>Order Status</h2>
+              <span>Admin control</span>
+            </div>
+            <strong id="adminOrderStatus">No order</strong>
+          </div>
+          <div class="order-tracker admin-order-tracker" id="adminOrderTracker">
+            <div class="order-steps" id="adminOrderSteps">
+              <span data-step="0">Pending</span>
+              <span data-step="1">Processing</span>
+              <span data-step="2">Shipped</span>
+              <span data-step="3">Delivered</span>
+            </div>
+          </div>
+          <div class="admin-status-actions">
+            <button type="button" data-status="0">Pending</button>
+            <button type="button" data-status="1">Processing</button>
+            <button type="button" data-status="2">Shipped</button>
+            <button type="button" data-status="3">Delivered</button>
+            <button type="button" class="danger" id="clearOrderStatus">Clear order</button>
+          </div>
+          <div class="account-cart-empty" id="orderStatusEmpty">No checkout order yet. Customer must click Buy Now first.</div>
+        </article>
+
+        <article class="admin-control-card" id="customer">
+          <div class="admin-panel-head">
+            <div>
+              <h2>Registered Account</h2>
+              <span>Customer</span>
+            </div>
+            <button class="clear-cart-btn admin-small-btn" id="clearAccount">Clear</button>
+          </div>
+          <div class="admin-detail-grid" id="customerDetails"></div>
+        </article>
+
+        <article class="admin-control-card">
+          <div class="admin-panel-head">
+            <div>
+              <h2>Current Cart</h2>
+              <span>Orders</span>
+            </div>
+            <button class="clear-cart-btn admin-small-btn" id="clearCart">Clear</button>
+          </div>
+          <div class="admin-table-wrap">
+            <table class="admin-table">
+              <thead>
+                <tr>
+                  <th>Product</th>
+                  <th>Qty</th>
+                  <th>Price</th>
+                  <th>Total</th>
+                </tr>
+              </thead>
+              <tbody id="cartRows"></tbody>
+            </table>
+          </div>
+          <div class="account-cart-empty" id="cartEmpty">No cart items yet.</div>
+        </article>
+
+        <article class="admin-control-card">
+          <div class="admin-panel-head">
+            <div>
+              <h2>Order History</h2>
+              <span>History</span>
+            </div>
+            <strong id="adminHistoryCount">0 orders</strong>
+          </div>
+          <div class="order-history-list" id="adminOrderHistory"></div>
+          <div class="account-cart-empty" id="adminOrderHistoryEmpty">No order history yet.</div>
+        </article>
+
+        <article class="admin-control-card">
+          <div class="admin-panel-head">
+            <div>
+              <h2>Saved Products</h2>
+              <span>Wishlist</span>
+            </div>
+            <button class="clear-cart-btn admin-small-btn" id="clearWishlist">Clear</button>
+          </div>
+          <div class="admin-table-wrap">
+            <table class="admin-table">
+              <thead>
+                <tr>
+                  <th>Product</th>
+                  <th>Category</th>
+                  <th>Weight</th>
+                  <th>Price</th>
+                </tr>
+              </thead>
+              <tbody id="wishlistRows"></tbody>
+            </table>
+          </div>
+          <div class="account-cart-empty" id="wishlistEmpty">No wishlist items yet.</div>
+        </article>
+
+        <article class="admin-control-card wide" id="products">
+          <div class="admin-panel-head">
+            <div>
+              <h2>Product Manager</h2>
+              <span>Catalog</span>
+            </div>
+            <strong id="productSearchCount">0 products</strong>
+          </div>
+          <div class="admin-table-wrap">
+            <table class="admin-table">
+              <thead>
+                <tr>
+                  <th>ID</th>
+                  <th>Product</th>
+                  <th>Category</th>
+                  <th>Price</th>
+                  <th>Stock</th>
+                </tr>
+              </thead>
+              <tbody id="productRows"></tbody>
+            </table>
+          </div>
+        </article>
+      </section>
+    </section>
+
+    <aside class="admin-insights-rail" aria-label="Admin insights">
+      <section class="admin-rail-card total-sale">
+        <div>
+          <span>Total Sale</span>
+          <strong id="railTotalSale">$0.00</strong>
+        </div>
+        <svg viewBox="0 0 150 72" aria-hidden="true">
+          <path d="M4 52 C22 36 34 48 48 38 C64 25 74 42 90 28 C106 12 118 18 130 8 C138 2 146 6 149 4 L149 72 L4 72 Z" fill="#d7f5e8" />
+          <path d="M4 52 C22 36 34 48 48 38 C64 25 74 42 90 28 C106 12 118 18 130 8 C138 2 146 6 149 4" fill="none" stroke="#1db67d" stroke-width="5" stroke-linecap="round" />
+        </svg>
+        <footer>
+          <span id="railOrderCount">0 total orders</span>
+          <a href="#orders">View Report</a>
+        </footer>
+      </section>
+
+      <section class="admin-rail-card sessions">
+        <span>Total Sessions</span>
+        <strong id="railSessions">845</strong>
+        <svg viewBox="0 0 150 64" aria-hidden="true">
+          <path d="M4 44 C30 36 42 52 60 40 C82 24 92 32 112 14 C130 0 142 20 148 26 L148 64 L4 64 Z" fill="#dbeeff" />
+          <path d="M4 44 C30 36 42 52 60 40 C82 24 92 32 112 14 C130 0 142 20 148 26" fill="none" stroke="#4f9beb" stroke-width="5" stroke-linecap="round" />
+        </svg>
+        <div class="admin-session-pills">
+          <span>Live</span>
+          <span>4 Visitors</span>
+          <span>See Live View</span>
+        </div>
+      </section>
+
+      <section class="admin-rail-card">
+        <span>Customer rate</span>
+        <strong id="railCustomerRate">5.12%</strong>
+        <svg viewBox="0 0 170 92" aria-hidden="true">
+          <path d="M6 70 C24 48 46 74 66 52 C92 24 105 70 126 32 C144 2 156 36 166 18 L166 92 L6 92 Z" fill="#f8d8c9" opacity=".75" />
+          <path d="M6 72 C30 58 48 70 70 60 C94 48 112 62 134 42 C150 28 158 36 166 34" fill="none" stroke="#9ccdf4" stroke-width="4" stroke-linecap="round" opacity=".7" />
+        </svg>
+        <div class="admin-rate-legend">
+          <span><b></b>First Time</span>
+          <span><b></b>Returning</span>
+        </div>
+      </section>
+
+      <section class="admin-rail-card">
+        <div class="admin-panel-head compact">
+          <h2>Recent Activity</h2>
+          <span>Live admin feed</span>
+        </div>
+        <div class="admin-activity-list" id="recentActivity"></div>
+      </section>
+    </aside>
+  </main>
+
+  <div class="notice-overlay" id="adminNoticeOverlay" aria-hidden="true">
+    <div class="notice-card" role="dialog" aria-modal="true" aria-labelledby="adminNoticeTitle">
+      <span class="notice-icon" id="adminNoticeIcon"><i class="bx bx-check" aria-hidden="true"></i></span>
+      <div>
+        <span class="cart-kicker">Admin update</span>
+        <h3 id="adminNoticeTitle">Order updated</h3>
+        <p id="adminNoticeMessage">The order status has been updated.</p>
+      </div>
+      <button type="button" id="adminNoticeClose">Done</button>
+    </div>
+  </div>
+
+  <script src="db-sync.js"></script>
+  <script>
+    const ADMIN_PRODUCTS = [
+      { id: 1, cat: 'fruits', img: 'https://images.unsplash.com/photo-1567306226416-28f0efdc88ce?w=420&q=80&auto=format&fit=crop', name: 'Red Apple', weight: '1 kg', price: 3.99, organic: true, reviews: 128 },
+      { id: 3, cat: 'fruits', img: 'https://images.unsplash.com/photo-1464965911861-746a04b4bca6?w=420&q=80&auto=format&fit=crop', name: 'Strawberries', weight: '250 g', price: 4.99, organic: false, reviews: 214 },
+      { id: 12, cat: 'vegetables', img: 'https://images.unsplash.com/photo-1561136594-7f68813d8210?w=420&q=80&auto=format&fit=crop', name: 'Cherry Tomatoes', weight: '500 g', price: 3.49, organic: true, reviews: 162 },
+      { id: 21, cat: 'dairy', img: 'https://images.unsplash.com/photo-1563636619-e9143da7973b?w=420&q=80&auto=format&fit=crop', name: 'Whole Milk', weight: '1 L', price: 2.99, organic: true, reviews: 209 },
+      { id: 27, cat: 'bakery', img: 'https://images.unsplash.com/photo-1585478259715-876acc5be8eb?w=420&q=80&auto=format&fit=crop', name: 'Sourdough Bread', weight: '800 g', price: 5.99, organic: false, reviews: 274 },
+      { id: 28, cat: 'bakery', img: 'https://images.unsplash.com/photo-1555507036-ab1f4038808a?w=420&q=80&auto=format&fit=crop', name: 'Butter Croissant', weight: '4 pcs', price: 4.49, organic: false, reviews: 187 },
+      { id: 33, cat: 'beverages', img: 'https://images.unsplash.com/photo-1621506289937-a8e4df240d0b?w=420&q=80&auto=format&fit=crop', name: 'Orange Juice', weight: '1 L', price: 3.49, organic: true, reviews: 231 },
+      { id: 40, cat: 'snacks', img: 'https://images.unsplash.com/photo-1567088286716-3ca8dd7b1a55?w=420&q=80&auto=format&fit=crop', name: 'Mixed Nuts', weight: '250 g', price: 7.99, organic: true, reviews: 223 },
+      { id: 46, cat: 'meat', img: 'https://images.unsplash.com/photo-1604503468506-a8da13d11d36?w=420&q=80&auto=format&fit=crop', name: 'Chicken Breast', weight: '500 g', price: 7.49, organic: true, reviews: 187 },
+      { id: 48, cat: 'meat', img: 'https://images.unsplash.com/photo-1559742811-822873691df8?w=420&q=80&auto=format&fit=crop', name: 'Atlantic Salmon', weight: '250 g', price: 9.99, organic: false, reviews: 163 },
+      { id: 51, cat: 'frozen', img: 'https://images.unsplash.com/photo-1513104890138-7c749659a591?w=420&q=80&auto=format&fit=crop', name: 'Margherita Pizza', weight: '400 g', price: 6.99, organic: false, reviews: 134 },
+      { id: 153, cat: 'pantry', img: 'https://images.unsplash.com/photo-1474979266404-7eaacbcd87c5?w=420&q=80&auto=format&fit=crop', name: 'Extra Virgin Olive Oil', weight: '500 ml', price: 8.99, organic: true, reviews: 132 }
+    ];
+    const ADMIN_MENU_TOTAL = 325;
+    const ACCOUNT_KEY = 'foodmart_demo_account';
+    const CART_KEY = 'foodmart_demo_cart';
+    const WISH_KEY = 'foodmart_demo_wishlist';
+    const ORDER_KEY = 'foodmart_demo_order_status';
+    const CURRENT_ORDER_KEY = 'foodmart_demo_current_order';
+    const ORDER_HISTORY_KEY = 'foodmart_demo_order_history';
+    const ORDER_STEPS = ['Pending', 'Processing', 'Shipped', 'Delivered'];
+
+    function readJSON(key, fallback) {
+      try {
+        return JSON.parse(localStorage.getItem(key) || JSON.stringify(fallback));
+      } catch (error) {
+        return fallback;
+      }
+    }
+
+    function escapeHTML(value) {
+      return String(value || '').replace(/[&<>"']/g, char => ({
+        '&': '&amp;',
+        '<': '&lt;',
+        '>': '&gt;',
+        '"': '&quot;',
+        "'": '&#039;'
+      }[char]));
+    }
+
+    function money(value) {
+      return '$' + Number(value || 0).toFixed(2);
+    }
+
+    function fallbackImage(img) {
+      const fallback = img.dataset.fallback;
+      img.onerror = null;
+      if (fallback && img.src !== fallback) {
+        img.src = fallback;
+      } else {
+        img.remove();
+      }
+    }
+
+    function readOrderStep() {
+      const saved = parseInt(localStorage.getItem(ORDER_KEY), 10);
+      return Number.isInteger(saved) && saved >= 0 && saved < ORDER_STEPS.length ? saved : -1;
+    }
+
+    function readOrderHistory() {
+      return readJSON(ORDER_HISTORY_KEY, []);
+    }
+
+    function saveOrderHistory(history) {
+      localStorage.setItem(ORDER_HISTORY_KEY, JSON.stringify(history));
+    }
+
+    function activeOrderCount() {
+      return readOrderStep() >= 0 && localStorage.getItem(CURRENT_ORDER_KEY) ? 1 : 0;
+    }
+
+    function cartValue(cart) {
+      return cart.reduce((sum, item) => sum + Number(item.price || 0) * Number(item.qty || 1), 0);
+    }
+
+    function historyValue(history) {
+      return history.reduce((sum, order) => sum + Number(order.total || 0), 0);
+    }
+
+    function updateCurrentHistoryStatus(step) {
+      const currentOrderId = localStorage.getItem(CURRENT_ORDER_KEY);
+      if (!currentOrderId) return;
+      const history = readOrderHistory();
+      const order = history.find(item => item.id === currentOrderId);
+      if (!order) return;
+      order.status = step;
+      saveOrderHistory(history);
+    }
+
+    function deleteCurrentOrder() {
+      const currentOrderId = localStorage.getItem(CURRENT_ORDER_KEY);
+      if (!currentOrderId) return false;
+      const history = readOrderHistory();
+      const nextHistory = history.filter(item => item.id !== currentOrderId);
+      saveOrderHistory(nextHistory);
+      localStorage.removeItem(ORDER_KEY);
+      localStorage.removeItem(CURRENT_ORDER_KEY);
+      return nextHistory.length !== history.length;
+    }
+
+    function showAdminNotice(title, message, type = 'success') {
+      document.getElementById('adminNoticeTitle').textContent = title;
+      document.getElementById('adminNoticeMessage').textContent = message;
+      document.getElementById('adminNoticeIcon').innerHTML = `<i class="bx ${type === 'danger' ? 'bx-error' : 'bx-check'}" aria-hidden="true"></i>`;
+      document.getElementById('adminNoticeOverlay').classList.toggle('danger', type === 'danger');
+      document.getElementById('adminNoticeOverlay').classList.add('open');
+      document.getElementById('adminNoticeOverlay').setAttribute('aria-hidden', 'false');
+    }
+
+    function closeAdminNotice() {
+      document.getElementById('adminNoticeOverlay').classList.remove('open', 'danger');
+      document.getElementById('adminNoticeOverlay').setAttribute('aria-hidden', 'true');
+    }
+
+    function productCell(item) {
+      return `
+        <div class="admin-product-cell">
+          <img src="${escapeHTML(item.img)}" alt="${escapeHTML(item.name)}" data-fallback="${escapeHTML(item.fallbackImg || '')}" onerror="fallbackImage(this)" />
+          <strong>${escapeHTML(item.name)}</strong>
+        </div>
+      `;
+    }
+
+    function renderStats(account, cart, wishlist, history) {
+      const cartQty = cart.reduce((sum, item) => sum + Number(item.qty || 1), 0);
+      const totalOrders = history.length + activeOrderCount();
+      const totalSales = cartValue(cart) + historyValue(history);
+      const customerTotal = account ? 1 : 0;
+
+      document.getElementById('totalProducts').textContent = ADMIN_MENU_TOTAL;
+      document.getElementById('totalCartItems').textContent = totalOrders;
+      document.getElementById('totalCartValue').textContent = money(totalSales);
+      document.getElementById('totalWishlist').textContent = customerTotal;
+      document.getElementById('dailyRevenueTotal').textContent = money(totalSales || cartValue(cart));
+      document.getElementById('railTotalSale').textContent = money(totalSales);
+      document.getElementById('railOrderCount').textContent = totalOrders + (totalOrders === 1 ? ' total order' : ' total orders');
+      document.getElementById('railSessions').textContent = String(845 + cartQty + wishlist.length);
+      document.getElementById('railCustomerRate').textContent = customerTotal ? '5.12%' : '0.00%';
+      document.getElementById('sidebarQueueCount').textContent = activeOrderCount() + (activeOrderCount() === 1 ? ' active order' : ' active orders');
+    }
+
+    function renderFavoriteItems(wishlist) {
+      const source = wishlist.length ? wishlist : ADMIN_PRODUCTS.slice(0, 4);
+      document.getElementById('favoriteItems').innerHTML = source.slice(0, 4).map((item, index) => `
+        <article class="admin-favorite-card">
+          <img src="${escapeHTML(item.img)}" alt="${escapeHTML(item.name)}" data-fallback="${escapeHTML(item.fallbackImg || '')}" onerror="fallbackImage(this)" />
+          <strong>${escapeHTML(item.name)}</strong>
+          <span>5.0 Review</span>
+          <div>
+            <b>${money(item.price)}</b>
+            <small>${12 + index}k Like it</small>
+          </div>
+        </article>
+      `).join('');
+    }
+
+    function renderCustomerFlow() {
+      const blue = [44, 58, 39, 60, 31, 61, 40];
+      const amber = [20, 51, 59, 34, 48, 68, 41];
+      document.getElementById('customerFlow').innerHTML = blue.map((value, index) => `
+        <div class="admin-bar-pair">
+          <span class="blue" style="height:${value}%"></span>
+          <span class="amber" style="height:${amber[index]}%"></span>
+          <small>${index + 1}</small>
+        </div>
+      `).join('');
+    }
+
+    function renderCustomer(account) {
+      const wrap = document.getElementById('customerDetails');
+      if (!account) {
+        wrap.innerHTML = '<div class="account-cart-empty">No customer registered yet.</div>';
+        document.getElementById('clearAccount').disabled = true;
+        return;
+      }
+
+      document.getElementById('clearAccount').disabled = false;
+      wrap.innerHTML = `
+        <article><span>Name</span><strong>${escapeHTML(account.name || 'Not added')}</strong></article>
+        <article><span>Email</span><strong>${escapeHTML(account.email || 'Not added')}</strong></article>
+        <article><span>Phone</span><strong>${escapeHTML(account.phone || 'Not added')}</strong></article>
+        <article><span>Address</span><strong>${escapeHTML(account.address || 'Not added')}</strong></article>
+        <article><span>Joined</span><strong>${escapeHTML(account.joined || 'Today')}</strong></article>
+      `;
+    }
+
+    function renderCart(cart) {
+      document.getElementById('clearCart').disabled = cart.length === 0;
+      document.getElementById('cartEmpty').style.display = cart.length ? 'none' : 'block';
+      document.getElementById('cartRows').innerHTML = cart.map(item => `
+        <tr>
+          <td>${productCell(item)}</td>
+          <td>${Number(item.qty || 1)}</td>
+          <td>${money(item.price)}</td>
+          <td>${money(Number(item.price || 0) * Number(item.qty || 1))}</td>
+        </tr>
+      `).join('');
+    }
+
+    function renderWishlist(wishlist) {
+      document.getElementById('clearWishlist').disabled = wishlist.length === 0;
+      document.getElementById('wishlistEmpty').style.display = wishlist.length ? 'none' : 'block';
+      document.getElementById('wishlistRows').innerHTML = wishlist.map(item => `
+        <tr>
+          <td>${productCell(item)}</td>
+          <td>${escapeHTML(item.cat || 'product')}</td>
+          <td>${escapeHTML(item.weight || '')}</td>
+          <td>${money(item.price)}</td>
+        </tr>
+      `).join('');
+    }
+
+    function renderOrderStatus() {
+      const step = readOrderStep();
+      const hasOrder = step >= 0;
+      document.getElementById('adminOrderStatus').textContent = hasOrder ? ORDER_STEPS[step] : 'No order';
+      document.getElementById('adminOrderTracker').hidden = !hasOrder;
+      document.getElementById('orderStatusEmpty').style.display = hasOrder ? 'none' : 'block';
+      document.getElementById('clearOrderStatus').disabled = !hasOrder;
+
+      document.querySelectorAll('#adminOrderSteps span').forEach(item => {
+        const itemStep = Number(item.dataset.step);
+        item.classList.toggle('done', hasOrder && itemStep < step);
+        item.classList.toggle('active', hasOrder && itemStep === step);
+      });
+
+      document.querySelectorAll('.admin-status-actions button[data-status]').forEach(button => {
+        const buttonStep = Number(button.dataset.status);
+        button.disabled = !hasOrder;
+        button.classList.toggle('active', hasOrder && buttonStep === step);
+      });
+    }
+
+    function renderOrderHistory() {
+      const history = readOrderHistory();
+      const list = document.getElementById('adminOrderHistory');
+      const empty = document.getElementById('adminOrderHistoryEmpty');
+
+      document.getElementById('adminHistoryCount').textContent = history.length + (history.length === 1 ? ' order' : ' orders');
+      empty.style.display = history.length ? 'none' : 'block';
+      list.innerHTML = history.map(order => `
+        <article class="order-history-card">
+          <div class="order-history-main">
+            <div>
+              <span>${escapeHTML(order.id)} - ${escapeHTML(order.customer || 'Customer')}</span>
+              <strong>${escapeHTML(order.date)}</strong>
+            </div>
+            <b>${money(order.total || 0)}</b>
+          </div>
+          <div class="order-history-meta">
+            <span>${ORDER_STEPS[order.status] || 'Pending'}</span>
+            <span>${(order.items || []).reduce((sum, item) => sum + Number(item.qty || 1), 0)} items</span>
+          </div>
+          <p>${(order.items || []).map(item => escapeHTML(item.name) + ' x' + Number(item.qty || 1)).join(', ')}</p>
+        </article>
+      `).join('');
+    }
+
+    function renderProducts() {
+      const q = document.getElementById('adminSearch').value.toLowerCase();
+      const products = ADMIN_PRODUCTS.filter(item =>
+        item.name.toLowerCase().includes(q) || item.cat.toLowerCase().includes(q)
+      );
+
+      document.getElementById('productSearchCount').textContent = products.length + (products.length === 1 ? ' product' : ' products');
+      document.getElementById('productRows').innerHTML = products.map(item => `
+        <tr>
+          <td>#${item.id}</td>
+          <td>${productCell(item)}</td>
+          <td>${escapeHTML(item.cat)}</td>
+          <td>${money(item.price)}</td>
+          <td>${item.organic ? 'Organic' : 'Standard'}</td>
+        </tr>
+      `).join('');
+    }
+
+    function renderActivity(account, cart, history) {
+      const items = [];
+      if (history[0]) {
+        items.push({ time: '10:10', title: 'New order ' + history[0].id, by: history[0].customer || 'Customer' });
+      }
+      if (account) {
+        items.push({ time: '08:40', title: 'Customer profile registered', by: account.name || 'Customer' });
+      }
+      if (cart[0]) {
+        items.push({ time: '08:05', title: cart[0].name + ' is waiting in cart', by: 'Storefront' });
+      }
+      if (!items.length) {
+        items.push({ time: '08:00', title: 'Dashboard is ready for store data', by: 'FoodMart' });
+      }
+
+      document.getElementById('recentActivity').innerHTML = items.slice(0, 3).map((item, index) => `
+        <article class="${index === 1 ? 'green' : ''}">
+          <strong>${escapeHTML(item.time)}</strong>
+          <div>
+            <span>${escapeHTML(item.title)}</span>
+            <small>by ${escapeHTML(item.by)}</small>
+          </div>
+        </article>
+      `).join('');
+    }
+
+    function renderAdmin() {
+      const account = readJSON(ACCOUNT_KEY, null);
+      const cart = readJSON(CART_KEY, []);
+      const wishlist = readJSON(WISH_KEY, []).filter(item => typeof item === 'object' && item.id);
+      const history = readOrderHistory();
+
+      renderStats(account, cart, wishlist, history);
+      renderFavoriteItems(wishlist);
+      renderCustomerFlow();
+      renderCustomer(account);
+      renderCart(cart);
+      renderOrderStatus();
+      renderOrderHistory();
+      renderWishlist(wishlist);
+      renderProducts();
+      renderActivity(account, cart, history);
+    }
+
+    document.getElementById('adminSearch').addEventListener('input', renderProducts);
+    document.getElementById('clearAccount').addEventListener('click', () => {
+      localStorage.removeItem(ACCOUNT_KEY);
+      renderAdmin();
+    });
+    document.getElementById('clearCart').addEventListener('click', () => {
+      localStorage.removeItem(CART_KEY);
+      renderAdmin();
+    });
+    document.getElementById('clearWishlist').addEventListener('click', () => {
+      localStorage.removeItem(WISH_KEY);
+      renderAdmin();
+    });
+    document.querySelector('.admin-status-actions').addEventListener('click', event => {
+      const button = event.target.closest('button[data-status]');
+      if (!button) return;
+      const step = Number(button.dataset.status);
+      localStorage.setItem(ORDER_KEY, String(step));
+      updateCurrentHistoryStatus(step);
+      renderAdmin();
+      showAdminNotice('Order marked ' + ORDER_STEPS[step], 'The active FoodMart order status was updated.');
+    });
+    document.getElementById('clearOrderStatus').addEventListener('click', () => {
+      const deleted = deleteCurrentOrder();
+      renderAdmin();
+      showAdminNotice(
+        deleted ? 'Current order deleted' : 'Order cleared',
+        deleted
+          ? 'The active order was removed from the dashboard and order history.'
+          : 'The active order status was cleared.',
+        deleted ? 'danger' : 'success'
+      );
+    });
+    document.getElementById('adminNoticeClose').addEventListener('click', closeAdminNotice);
+    document.getElementById('adminNoticeOverlay').addEventListener('click', event => {
+      if (event.target === document.getElementById('adminNoticeOverlay')) closeAdminNotice();
+    });
+    window.addEventListener('storage', event => {
+      if ([CART_KEY, WISH_KEY, ACCOUNT_KEY, ORDER_KEY, ORDER_HISTORY_KEY].includes(event.key)) renderAdmin();
+    });
+
+    renderAdmin();
+  </script>
+</body>
+</html>

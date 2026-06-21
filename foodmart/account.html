@@ -1,0 +1,750 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Client Dashboard - FoodMart</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet" />
+  <script src="theme-toggle.js"></script>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body class="client-dashboard-page">
+  <main class="client-dashboard">
+    <aside class="dashboard-sidebar" aria-label="Client menu">
+      <a href="index.html" class="dashboard-brand">
+        <span class="logo-icon">FM</span>
+        <strong>Food<span>Mart</span>.</strong>
+      </a>
+
+      <nav class="dashboard-nav">
+        <a class="active" href="#dashboard"><span><i class="bx bx-grid-alt" aria-hidden="true"></i></span>Dashboard</a>
+        <a href="#food-order"><span><i class="bx bx-food-menu" aria-hidden="true"></i></span>Food Order</a>
+        <a href="#wishlist"><span><i class="bx bx-heart" aria-hidden="true"></i></span>Favorite</a>
+        <a href="#messages"><span><i class="bx bx-envelope" aria-hidden="true"></i></span>Message</a>
+        <a href="#history"><span><i class="bx bx-history" aria-hidden="true"></i></span>Order History</a>
+        <a href="#bills"><span><i class="bx bx-receipt" aria-hidden="true"></i></span>Bills</a>
+        <a href="register.html"><span><i class="bx bx-cog" aria-hidden="true"></i></span>Setting</a>
+      </nav>
+
+      <section class="dashboard-upgrade">
+        <strong>Upgrade your account to get free voucher</strong>
+        <button type="button" id="upgradeBtn">Upgrade</button>
+      </section>
+    </aside>
+
+    <section class="dashboard-main" id="dashboard">
+      <header class="dashboard-topbar">
+        <label class="dashboard-search">
+          <i class="bx bx-search" aria-hidden="true"></i>
+          <input id="dashboardSearch" type="search" placeholder="What do you want to eat today..." />
+        </label>
+        <div class="dashboard-tools" aria-label="Dashboard tools">
+          <button type="button" title="Notifications"><i class="bx bx-bell" aria-hidden="true"></i></button>
+          <button type="button" title="Messages"><i class="bx bx-envelope" aria-hidden="true"></i></button>
+          <button type="button" title="Settings"><i class="bx bx-cog" aria-hidden="true"></i></button>
+        </div>
+      </header>
+
+      <section class="dashboard-promo" id="food-order">
+        <div>
+          <span>Today only</span>
+          <h1>Get Discount Voucher Up To 20%</h1>
+          <p>Fresh grocery picks, daily dishes, and fast checkout for your registered FoodMart account.</p>
+        </div>
+        <img
+          src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=320&q=80&auto=format&fit=crop"
+          alt="Happy FoodMart customer"
+        />
+      </section>
+
+      <section class="dashboard-section">
+        <div class="dashboard-section-head">
+          <h2>Category</h2>
+          <button type="button" id="clearSearchBtn">View all</button>
+        </div>
+        <div class="dashboard-categories" id="dashboardCategories"></div>
+      </section>
+
+      <section class="dashboard-section">
+        <div class="dashboard-section-head">
+          <h2>Popular Dishes</h2>
+          <a href="all-products.html">View all</a>
+        </div>
+        <div class="dashboard-dish-grid" id="popularDishes"></div>
+      </section>
+
+      <section class="dashboard-section dashboard-lower-grid">
+        <article class="dashboard-metric" id="bills">
+          <span>Performance</span>
+          <strong id="performanceScore">+15%</strong>
+          <p>Saved this month with vouchers and FoodMart rewards.</p>
+        </article>
+        <article class="dashboard-orders-panel">
+          <div class="dashboard-section-head compact">
+            <h2>Current Order</h2>
+            <strong id="dashboardCartTotal">$0.00</strong>
+          </div>
+          <div class="dashboard-cart-list" id="dashboardCartList"></div>
+          <div class="dashboard-empty" id="dashboardCartEmpty">Your cart is empty.</div>
+          <div class="order-tracker dashboard-order-tracker" id="dashboardOrderTracker" hidden>
+            <div class="order-tracker-head">
+              <span class="cart-kicker">Order status</span>
+              <strong id="dashboardOrderStatus">Pending</strong>
+            </div>
+            <div class="order-steps" id="dashboardOrderSteps">
+              <span data-step="0">Pending</span>
+              <span data-step="1">Processing</span>
+              <span data-step="2">Shipped</span>
+              <span data-step="3">Delivered</span>
+            </div>
+          </div>
+        </article>
+      </section>
+
+      <section class="dashboard-section" id="wishlist">
+        <div class="dashboard-section-head">
+          <h2>Favorite</h2>
+          <strong id="dashboardWishCount">0 items</strong>
+        </div>
+        <div class="dashboard-dish-grid compact-grid" id="dashboardWishlist"></div>
+        <div class="dashboard-empty" id="dashboardWishlistEmpty">No favorite products yet.</div>
+      </section>
+
+      <section class="dashboard-section" id="history">
+        <div class="dashboard-section-head">
+          <h2>Order History</h2>
+          <strong id="dashboardHistoryCount">0 orders</strong>
+        </div>
+        <div class="dashboard-history-list" id="dashboardOrderHistory"></div>
+        <div class="dashboard-empty" id="dashboardOrderHistoryEmpty">No order history yet.</div>
+      </section>
+    </section>
+
+    <aside class="dashboard-right-panel" aria-label="Client details">
+      <div class="dashboard-profile">
+        <div class="dashboard-avatar" id="dashboardAvatar">FM</div>
+        <div>
+          <strong id="dashboardName">Customer</strong>
+          <span id="dashboardEmail">customer@example.com</span>
+        </div>
+      </div>
+
+      <section class="dashboard-balance">
+        <span>Your Balance</span>
+        <strong id="dashboardBalance">$120.00</strong>
+        <div class="balance-actions">
+          <button type="button">Top Up</button>
+          <button type="button">Transfer</button>
+        </div>
+      </section>
+
+      <section class="dashboard-address">
+        <div class="dashboard-section-head compact">
+          <h2>Your Address</h2>
+          <a href="register.html">Change</a>
+        </div>
+        <strong id="dashboardAddress">Not added</strong>
+        <span id="dashboardPhone">No phone added</span>
+      </section>
+
+      <section class="dashboard-order-menu">
+        <div class="dashboard-section-head compact">
+          <h2>Order Menu</h2>
+          <button type="button" id="clearAccountCart">Clear</button>
+        </div>
+        <div class="dashboard-side-cart" id="dashboardSideCart"></div>
+        <button type="button" class="dashboard-checkout" id="dashboardCheckout">Checkout</button>
+      </section>
+
+      <section class="dashboard-account-actions">
+        <a href="index.html">Shop more</a>
+        <a href="register.html">Edit details</a>
+        <button type="button" id="logoutBtn">Clear account</button>
+      </section>
+    </aside>
+  </main>
+
+  <div class="notice-overlay" id="noticeOverlay" aria-hidden="true">
+    <div class="notice-card" role="dialog" aria-modal="true" aria-labelledby="noticeTitle">
+      <span class="notice-icon"><i class="bx bx-check" aria-hidden="true"></i></span>
+      <div>
+        <span class="cart-kicker">FoodMart dashboard</span>
+        <h3 id="noticeTitle">Dashboard updated</h3>
+        <p id="noticeMessage">Your FoodMart account has been updated.</p>
+      </div>
+      <button type="button" id="noticeClose">Done</button>
+    </div>
+  </div>
+
+  <div class="toast" id="toast"><i class="bx bx-cart" aria-hidden="true"></i><span id="toastMsg">Added to cart</span></div>
+
+  <div class="confirm-overlay" id="confirmOverlay" aria-hidden="true">
+    <div class="confirm-card" role="dialog" aria-modal="true" aria-labelledby="confirmTitle">
+      <button class="confirm-close" id="confirmClose">×</button>
+      <h3 id="confirmTitle">Confirm your order</h3>
+      <div id="confirmItems" class="confirm-items-list"></div>
+      <div class="confirm-summary-row">
+        <span>Total</span>
+        <strong id="confirmTotal">$0.00</strong>
+      </div>
+      <div class="confirm-actions">
+        <button type="button" id="confirmEdit" class="btn">Edit order</button>
+        <button type="button" id="confirmSubmit" class="btn primary">Confirm order</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="db-sync.js"></script>
+  <script>
+    const ACCOUNT_KEY = 'foodmart_demo_account';
+    const CART_KEY = 'foodmart_demo_cart';
+    const WISH_KEY = 'foodmart_demo_wishlist';
+    const ORDER_KEY = 'foodmart_demo_order_status';
+    const CURRENT_ORDER_KEY = 'foodmart_demo_current_order';
+    const ORDER_HISTORY_KEY = 'foodmart_demo_order_history';
+    const ORDER_NOTIFY_KEY = 'foodmart_demo_order_status_notice';
+    const ORDER_STEPS = ['Pending', 'Processing', 'Shipped', 'Delivered'];
+
+    const categories = [
+      { key: 'all', label: 'All', icon: 'bx-grid-alt' },
+      { key: 'bakery', label: 'Bakery', icon: 'bx-store' },
+      { key: 'vegetables', label: 'Veggie', icon: 'bx-leaf' },
+      { key: 'dairy', label: 'Dairy', icon: 'bx-droplet' },
+      { key: 'fruits', label: 'Fruits', icon: 'bx-basket' },
+      { key: 'beverages', label: 'Drinks', icon: 'bx-drink' }
+    ];
+
+    const dashboardProducts = [
+      {
+        id: 201,
+        cat: 'bakery',
+        name: 'Butter Croissant',
+        weight: '4 pcs',
+        price: 4.49,
+        old: 5.49,
+        stars: 5,
+        img: 'https://images.unsplash.com/photo-1555507036-ab1f4038808a?w=420&q=80&auto=format&fit=crop'
+      },
+      {
+        id: 202,
+        cat: 'frozen',
+        name: 'Pepperoni Pizza',
+        weight: '420 g',
+        price: 7.49,
+        old: 9.49,
+        stars: 5,
+        img: 'https://images.unsplash.com/photo-1513104890138-7c749659a591?w=420&q=80&auto=format&fit=crop'
+      },
+      {
+        id: 203,
+        cat: 'meat',
+        name: 'Chicken Breast',
+        weight: '500 g',
+        price: 7.49,
+        old: null,
+        stars: 4,
+        img: 'https://images.unsplash.com/photo-1604503468506-a8da13d11d36?w=420&q=80&auto=format&fit=crop'
+      },
+      {
+        id: 204,
+        cat: 'beverages',
+        name: 'Orange Juice',
+        weight: '1 L',
+        price: 3.49,
+        old: 4.99,
+        stars: 5,
+        img: 'https://images.unsplash.com/photo-1621506289937-a8e4df240d0b?w=420&q=80&auto=format&fit=crop'
+      },
+      {
+        id: 205,
+        cat: 'dairy',
+        name: 'Greek Yogurt',
+        weight: '500 g',
+        price: 4.29,
+        old: null,
+        stars: 5,
+        img: 'https://images.unsplash.com/photo-1488477181946-6428a0291777?w=420&q=80&auto=format&fit=crop'
+      },
+      {
+        id: 206,
+        cat: 'fruits',
+        name: 'Strawberries',
+        weight: '250 g',
+        price: 4.99,
+        old: 6.99,
+        stars: 5,
+        img: 'https://images.unsplash.com/photo-1464965911861-746a04b4bca6?w=420&q=80&auto=format&fit=crop'
+      }
+    ];
+
+    let account = readJSON(ACCOUNT_KEY, null);
+    let cartItems = readJSON(CART_KEY, []);
+    let wishlistItems = readJSON(WISH_KEY, []).filter(item => typeof item === 'object' && item.id);
+    let activeCategory = 'all';
+
+    function readJSON(key, fallback) {
+      try {
+        const value = localStorage.getItem(key);
+        return value ? JSON.parse(value) : fallback;
+      } catch (error) {
+        return fallback;
+      }
+    }
+
+    function escapeHTML(value) {
+      return String(value || '').replace(/[&<>"']/g, char => ({
+        '&': '&amp;',
+        '<': '&lt;',
+        '>': '&gt;',
+        '"': '&quot;',
+        "'": '&#039;'
+      }[char]));
+    }
+
+    function boxIcon(name) {
+      return `<i class="bx ${name}" aria-hidden="true"></i>`;
+    }
+
+    function starIcons(count) {
+      const stars = Math.max(0, Math.min(5, Number(count) || 0));
+      return Array.from({ length: 5 }, (_, index) => boxIcon(index < stars ? 'bxs-star' : 'bx-star')).join('');
+    }
+
+    function money(value) {
+      return '$' + Number(value || 0).toFixed(2);
+    }
+
+    function fallbackImage(img) {
+      const fallback = img.dataset.fallback;
+      img.onerror = null;
+      if (fallback && img.src !== fallback) {
+        img.src = fallback;
+      } else {
+        img.remove();
+      }
+    }
+
+    function cartSubtotal() {
+      return cartItems.reduce((sum, item) => sum + Number(item.price || 0) * Number(item.qty || 1), 0);
+    }
+
+    function readOrderStep() {
+      const saved = parseInt(localStorage.getItem(ORDER_KEY), 10);
+      return Number.isInteger(saved) && saved >= 0 && saved < ORDER_STEPS.length ? saved : -1;
+    }
+
+    function readOrderHistory() {
+      return readJSON(ORDER_HISTORY_KEY, []);
+    }
+
+    function saveCart() {
+      localStorage.setItem(CART_KEY, JSON.stringify(cartItems));
+    }
+
+    function saveWishlist() {
+      localStorage.setItem(WISH_KEY, JSON.stringify(wishlistItems));
+    }
+
+    function initials(name) {
+      return String(name || 'FoodMart')
+        .split(' ')
+        .filter(Boolean)
+        .map(part => part[0])
+        .join('')
+        .slice(0, 2)
+        .toUpperCase();
+    }
+
+    function showNotice(title, message) {
+      document.getElementById('noticeTitle').textContent = title;
+      document.getElementById('noticeMessage').textContent = message;
+      document.getElementById('noticeOverlay').classList.add('open');
+      document.getElementById('noticeOverlay').setAttribute('aria-hidden', 'false');
+    }
+
+    let toastTimer;
+    function showToast(msg) {
+      const t = document.getElementById('toast');
+      document.getElementById('toastMsg').textContent = msg;
+      t.classList.add('show');
+      clearTimeout(toastTimer);
+      toastTimer = setTimeout(() => t.classList.remove('show'), 2000);
+    }
+
+    function openConfirmOverlay() {
+      const listEl = document.getElementById('confirmItems');
+      if (!listEl) return;
+      listEl.innerHTML = cartItems.map(item => `
+        <div class="confirm-item-row">
+          <div class="confirm-item-name">${escapeHTML(item.name)} <span class="confirm-qty">x${item.qty}</span></div>
+          <div class="confirm-item-price">${money(Number(item.price) * Number(item.qty))}</div>
+        </div>
+      `).join('');
+      document.getElementById('confirmTotal').textContent = money(cartSubtotal());
+      document.getElementById('confirmOverlay').classList.add('open');
+      document.getElementById('confirmOverlay').setAttribute('aria-hidden', 'false');
+    }
+
+    function closeConfirmOverlay() {
+      document.getElementById('confirmOverlay').classList.remove('open');
+      document.getElementById('confirmOverlay').setAttribute('aria-hidden', 'true');
+    }
+
+    function closeNotice() {
+      document.getElementById('noticeOverlay').classList.remove('open');
+      document.getElementById('noticeOverlay').setAttribute('aria-hidden', 'true');
+    }
+
+    function addToCart(product) {
+      const existing = cartItems.find(item => item.id === product.id);
+      if (existing) {
+        existing.qty = Number(existing.qty || 1) + 1;
+      } else {
+        cartItems.push({
+          id: product.id,
+          cat: product.cat,
+          name: product.name,
+          price: product.price,
+          img: product.img,
+          fallbackImg: product.fallbackImg || '',
+          weight: product.weight,
+          qty: 1
+        });
+      }
+      saveCart();
+      renderCart();
+      showToast('"' + product.name + '" added to cart');
+    }
+
+    function toggleWishlist(productId) {
+      const product = dashboardProducts.find(item => item.id === productId) || wishlistItems.find(item => item.id === productId);
+      if (!product) return;
+
+      if (wishlistItems.some(item => item.id === productId)) {
+        wishlistItems = wishlistItems.filter(item => item.id !== productId);
+      } else {
+        wishlistItems.push({
+          id: product.id,
+          cat: product.cat,
+          name: product.name,
+          price: product.price,
+          img: product.img,
+          fallbackImg: product.fallbackImg || '',
+          weight: product.weight
+        });
+      }
+
+      saveWishlist();
+      renderProducts();
+      renderWishlist();
+    }
+
+    function removeCartItem(productId) {
+      cartItems = cartItems.filter(item => item.id !== productId);
+      saveCart();
+      renderCart();
+    }
+
+    function changeCartQty(productId, delta) {
+      const item = cartItems.find(entry => entry.id === productId);
+      if (!item) return;
+      item.qty = Math.max(1, Number(item.qty || 1) + delta);
+      saveCart();
+      renderCart();
+    }
+
+    function clearCart() {
+      cartItems = [];
+      saveCart();
+      renderCart();
+    }
+
+    function formatOrderDate(date) {
+      return date.toLocaleDateString('en-US', {
+        month: 'long',
+        day: 'numeric',
+        year: 'numeric'
+      });
+    }
+
+    function startCheckout() {
+      if (!cartItems.length) {
+        showNotice('Cart is empty', 'Add products before checking out.');
+        return;
+      }
+
+      const now = new Date();
+      const order = {
+        id: 'FM-' + now.getTime(),
+        customer: account.name,
+        email: account.email,
+        date: formatOrderDate(now),
+        createdAt: now.toISOString(),
+        total: cartSubtotal(),
+        status: 0,
+        items: cartItems.map(item => ({
+          id: item.id,
+          name: item.name,
+          qty: item.qty,
+          price: item.price,
+          weight: item.weight
+        }))
+      };
+
+      const history = readOrderHistory();
+      history.unshift(order);
+      localStorage.setItem(ORDER_HISTORY_KEY, JSON.stringify(history));
+      localStorage.setItem(CURRENT_ORDER_KEY, order.id);
+      localStorage.setItem(ORDER_KEY, '0');
+      cartItems = [];
+      saveCart();
+      renderCart();
+      renderOrderStatus();
+      renderOrderHistory();
+      showNotice('Order started', 'Your order has been sent to admin and is now pending.');
+    }
+
+    function productCard(product) {
+      const wished = wishlistItems.some(item => item.id === product.id);
+      const discount = product.old ? Math.round((1 - product.price / product.old) * 100) : 0;
+      const stars = Number.isInteger(product.stars) ? product.stars : 5;
+      return `
+        <article class="dashboard-dish-card" data-product-id="${product.id}">
+          ${discount ? `<span class="dish-discount">${discount}% Off</span>` : ''}
+          <button type="button" class="dish-wish ${wished ? 'active' : ''}" data-action="wish" aria-label="Favorite ${escapeHTML(product.name)}">${boxIcon(wished ? 'bxs-heart' : 'bx-heart')}</button>
+          <img src="${escapeHTML(product.img)}" alt="${escapeHTML(product.name)}" onerror="fallbackImage(this)" />
+          <div>
+            <span class="dish-stars">${starIcons(stars)}</span>
+            <strong>${escapeHTML(product.name)}</strong>
+            <small>${escapeHTML(product.weight)}</small>
+          </div>
+          <footer>
+            <b>${money(product.price)}</b>
+            <button type="button" data-action="add">+</button>
+          </footer>
+        </article>
+      `;
+    }
+
+    function renderCategories() {
+      document.getElementById('dashboardCategories').innerHTML = categories.map(category => `
+        <button type="button" class="${activeCategory === category.key ? 'active' : ''}" data-category="${category.key}">
+          <span>${boxIcon(category.icon)}</span>
+          ${category.label}
+        </button>
+      `).join('');
+    }
+
+    function renderProducts() {
+      const query = document.getElementById('dashboardSearch').value.trim().toLowerCase();
+      const filtered = dashboardProducts.filter(product => {
+        const matchesCategory = activeCategory === 'all' || product.cat === activeCategory;
+        const matchesQuery = !query || product.name.toLowerCase().includes(query) || product.cat.toLowerCase().includes(query);
+        return matchesCategory && matchesQuery;
+      });
+
+      document.getElementById('popularDishes').innerHTML = filtered.length
+        ? filtered.map(productCard).join('')
+        : '<div class="dashboard-empty full">No dishes matched your search.</div>';
+      renderCategories();
+    }
+
+    function cartItemHTML(item, side = false) {
+      return `
+        <article class="${side ? 'dashboard-side-cart-item' : 'dashboard-cart-item'}" data-cart-id="${item.id}">
+          <img src="${escapeHTML(item.img)}" alt="${escapeHTML(item.name)}" data-fallback="${escapeHTML(item.fallbackImg || '')}" onerror="fallbackImage(this)" />
+          <div>
+            <strong>${escapeHTML(item.name)}</strong>
+            <span>${escapeHTML(item.weight)} - Qty ${Number(item.qty || 1)}</span>
+          </div>
+          <div class="dashboard-cart-actions">
+            <b>${money(Number(item.price || 0) * Number(item.qty || 1))}</b>
+            ${side ? `
+              <button type="button" data-action="decrease">-</button>
+              <button type="button" data-action="increase">+</button>
+            ` : ''}
+            <button type="button" data-action="remove">Remove</button>
+          </div>
+        </article>
+      `;
+    }
+
+    function renderCart() {
+      const total = cartSubtotal();
+      const hasItems = cartItems.length > 0;
+      document.getElementById('dashboardCartTotal').textContent = money(total);
+      document.getElementById('dashboardCartEmpty').style.display = hasItems ? 'none' : 'block';
+      document.getElementById('dashboardCartList').innerHTML = cartItems.slice(0, 3).map(item => cartItemHTML(item)).join('');
+      document.getElementById('dashboardSideCart').innerHTML = hasItems
+        ? cartItems.map(item => cartItemHTML(item, true)).join('')
+        : '<div class="dashboard-empty compact">No products selected.</div>';
+      document.getElementById('clearAccountCart').disabled = !hasItems;
+      document.getElementById('dashboardCheckout').disabled = !hasItems;
+      renderOrderStatus();
+    }
+
+    function renderWishlist() {
+      const count = wishlistItems.length;
+      document.getElementById('dashboardWishCount').textContent = count + (count === 1 ? ' item' : ' items');
+      document.getElementById('dashboardWishlistEmpty').style.display = count ? 'none' : 'block';
+      document.getElementById('dashboardWishlist').innerHTML = wishlistItems.slice(0, 4).map(productCard).join('');
+    }
+
+    function renderOrderStatus() {
+      const step = readOrderStep();
+      const currentOrderId = localStorage.getItem(CURRENT_ORDER_KEY);
+      const hasOrder = step >= 0 && !!currentOrderId;
+      document.getElementById('dashboardOrderTracker').hidden = !hasOrder;
+      if (!hasOrder) {
+        document.querySelectorAll('#dashboardOrderSteps span').forEach(item => item.classList.remove('done', 'active'));
+        return;
+      }
+
+      document.getElementById('dashboardOrderStatus').textContent = ORDER_STEPS[step];
+      document.querySelectorAll('#dashboardOrderSteps span').forEach(item => {
+        const itemStep = Number(item.dataset.step);
+        item.classList.toggle('done', itemStep < step);
+        item.classList.toggle('active', itemStep === step);
+      });
+
+      if ((step === 1 || step === 3) && currentOrderId) {
+        const noticeId = currentOrderId + ':' + step;
+        if (localStorage.getItem(ORDER_NOTIFY_KEY) !== noticeId) {
+          localStorage.setItem(ORDER_NOTIFY_KEY, noticeId);
+          showNotice(
+            step === 3 ? 'Your order is delivered' : 'Your order is processing',
+            step === 3
+              ? 'Admin marked your FoodMart order as delivered.'
+              : 'Admin started processing your FoodMart order.'
+          );
+        }
+      }
+    }
+
+    function renderOrderHistory() {
+      const history = readOrderHistory();
+      document.getElementById('dashboardHistoryCount').textContent = history.length + (history.length === 1 ? ' order' : ' orders');
+      document.getElementById('dashboardOrderHistoryEmpty').style.display = history.length ? 'none' : 'block';
+      document.getElementById('dashboardOrderHistory').innerHTML = history.slice(0, 4).map(order => `
+        <article>
+          <div>
+            <strong>${escapeHTML(order.id)}</strong>
+            <span>${escapeHTML(order.date)} - ${ORDER_STEPS[order.status] || 'Pending'}</span>
+          </div>
+          <b>${money(order.total)}</b>
+        </article>
+      `).join('');
+    }
+
+    function renderProfile() {
+      const name = account.name || 'FoodMart Customer';
+      const email = account.email || 'customer@example.com';
+      document.getElementById('dashboardAvatar').textContent = initials(name);
+      document.getElementById('dashboardName').textContent = name;
+      document.getElementById('dashboardEmail').textContent = email;
+      document.getElementById('dashboardAddress').textContent = account.address || 'Not added';
+      document.getElementById('dashboardPhone').textContent = account.phone || 'No phone added';
+      document.getElementById('dashboardBalance').textContent = account.balance ? money(account.balance) : '$120.00';
+    }
+
+    function renderDashboard() {
+      renderProfile();
+      renderProducts();
+      renderCart();
+      renderWishlist();
+      renderOrderHistory();
+    }
+
+    if (!account) {
+      window.location.href = 'register.html';
+    } else {
+      renderDashboard();
+    }
+
+    document.getElementById('dashboardCategories').addEventListener('click', event => {
+      const button = event.target.closest('button[data-category]');
+      if (!button) return;
+      activeCategory = button.dataset.category;
+      renderProducts();
+    });
+
+    document.getElementById('popularDishes').addEventListener('click', event => {
+      const button = event.target.closest('button[data-action]');
+      if (!button) return;
+      const card = button.closest('[data-product-id]');
+      const productId = Number(card.dataset.productId);
+      const product = dashboardProducts.find(item => item.id === productId);
+      if (button.dataset.action === 'add' && product) addToCart(product);
+      if (button.dataset.action === 'wish') toggleWishlist(productId);
+    });
+
+    document.getElementById('dashboardWishlist').addEventListener('click', event => {
+      const button = event.target.closest('button[data-action]');
+      if (!button) return;
+      const card = button.closest('[data-product-id]');
+      const productId = Number(card.dataset.productId);
+      const product = wishlistItems.find(item => item.id === productId);
+      if (button.dataset.action === 'add' && product) addToCart(product);
+      if (button.dataset.action === 'wish') toggleWishlist(productId);
+    });
+
+    document.getElementById('dashboardSideCart').addEventListener('click', event => {
+      const button = event.target.closest('button[data-action]');
+      if (!button) return;
+      const row = button.closest('[data-cart-id]');
+      const productId = Number(row.dataset.cartId);
+      if (button.dataset.action === 'increase') changeCartQty(productId, 1);
+      if (button.dataset.action === 'decrease') changeCartQty(productId, -1);
+      if (button.dataset.action === 'remove') removeCartItem(productId);
+    });
+
+    document.getElementById('dashboardCartList').addEventListener('click', event => {
+      const button = event.target.closest('button[data-action="remove"]');
+      if (!button) return;
+      const row = button.closest('[data-cart-id]');
+      removeCartItem(Number(row.dataset.cartId));
+    });
+
+    document.getElementById('dashboardSearch').addEventListener('input', renderProducts);
+    document.getElementById('clearSearchBtn').addEventListener('click', () => {
+      document.getElementById('dashboardSearch').value = '';
+      activeCategory = 'all';
+      renderProducts();
+    });
+    document.getElementById('clearAccountCart').addEventListener('click', clearCart);
+    document.getElementById('dashboardCheckout').addEventListener('click', () => {
+      openConfirmOverlay();
+    });
+    document.getElementById('confirmClose').addEventListener('click', closeConfirmOverlay);
+    document.getElementById('confirmEdit').addEventListener('click', closeConfirmOverlay);
+    document.getElementById('confirmSubmit').addEventListener('click', () => {
+      closeConfirmOverlay();
+      startCheckout();
+    });
+    document.getElementById('noticeClose').addEventListener('click', closeNotice);
+    document.getElementById('noticeOverlay').addEventListener('click', event => {
+      if (event.target === document.getElementById('noticeOverlay')) closeNotice();
+    });
+    document.getElementById('upgradeBtn').addEventListener('click', () => {
+      showNotice('Voucher unlocked', 'A 20% FoodMart voucher is ready for your next checkout.');
+    });
+    document.getElementById('logoutBtn').addEventListener('click', () => {
+      localStorage.removeItem(ACCOUNT_KEY);
+      window.location.href = 'register.html';
+    });
+    window.addEventListener('storage', event => {
+      if ([CART_KEY, WISH_KEY, ACCOUNT_KEY, ORDER_KEY, ORDER_HISTORY_KEY].includes(event.key)) {
+        account = readJSON(ACCOUNT_KEY, null);
+        cartItems = readJSON(CART_KEY, []);
+        wishlistItems = readJSON(WISH_KEY, []).filter(item => typeof item === 'object' && item.id);
+        if (!account) {
+          window.location.href = 'register.html';
+          return;
+        }
+        renderDashboard();
+      }
+    });
+  </script>
+</body>
+</html>
